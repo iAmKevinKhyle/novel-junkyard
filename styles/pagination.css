@@ -1,0 +1,37 @@
+.paginaton_container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#page_number {
+  width: 50px;
+  text-align: center;
+}
+
+.paginaton_container > button {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--main-bg-color-dark);
+  cursor: pointer;
+}
+
+.paginaton_container > button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 500px) {
+  .pagination > span:not(.number_of_all_pages) {
+    display: none;
+  }
+  .pagination > span.number_of_all_pages::before {
+    content: "/ ";
+  }
+  .paginaton_container > button > span {
+    display: none;
+  }
+  .paginaton_container {
+    gap: 0.5rem;
+  }
+}

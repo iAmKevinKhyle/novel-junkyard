@@ -1,0 +1,201 @@
+.card-container {
+  width: 100%;
+}
+.container {
+  display: grid;
+  grid-template-areas:
+    "d c b a a e f l"
+    "g h i a a j k m";
+  gap: 0.85rem;
+
+  width: 100%;
+}
+.container > .card {
+  position: relative;
+  transition: transform 300ms ease;
+  border-radius: 0.15rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container > .card:hover {
+  transform: scale(1.025);
+}
+
+.container > .card > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.container > .card > span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  background-color: rgba(29, 29, 29, 0.75);
+  text-shadow: 0 0 2px black;
+  color: white;
+  font-size: 0.7rem;
+  text-align: center;
+  text-transform: capitalize;
+  line-height: 1.1;
+}
+
+.container > .card:nth-of-type(1) > span {
+  font-size: 1.25rem;
+  color: gold;
+}
+.container > .card:nth-of-type(1) {
+  grid-area: a;
+}
+.container > .card:nth-of-type(2) {
+  grid-area: b;
+}
+.container > .card:nth-of-type(3) {
+  grid-area: c;
+}
+.container > .card:nth-of-type(4) {
+  grid-area: d;
+}
+.container > .card:nth-of-type(5) {
+  grid-area: e;
+}
+.container > .card:nth-of-type(6) {
+  grid-area: f;
+}
+.container > .card:nth-of-type(7) {
+  grid-area: g;
+}
+.container > .card:nth-of-type(8) {
+  grid-area: h;
+}
+.container > .card:nth-of-type(9) {
+  grid-area: i;
+}
+.container > .card:nth-of-type(10) {
+  grid-area: j;
+}
+.container > .card:nth-of-type(11) {
+  grid-area: k;
+}
+.container > .card:nth-of-type(12) {
+  grid-area: l;
+}
+.container > .card:nth-of-type(13) {
+  grid-area: m;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    grid-template-areas:
+      "d c b a a e f"
+      "g h i a a j k";
+  }
+  .container > .card:nth-of-type(12) {
+    display: none;
+  }
+  .container > .card:nth-of-type(13) {
+    display: none;
+  }
+}
+@media (max-width: 890px) {
+  .container {
+    grid-template-areas:
+      "c b a a e f"
+      "h i a a j k";
+  }
+  .container > .card:nth-of-type(4) {
+    display: none;
+  }
+  .container > .card:nth-of-type(7) {
+    display: none;
+  }
+}
+@media (max-width: 777px) {
+  .container {
+    grid-template-areas:
+      "b a a e f"
+      "i a a j k";
+  }
+  .container > .card:nth-of-type(3) {
+    display: none;
+  }
+  .container > .card:nth-of-type(8) {
+    display: none;
+  }
+}
+@media (max-width: 613px) {
+  .container {
+    grid-template-areas:
+      "a b c d"
+      "e f g h"
+      "i j k l";
+  }
+  .container > .card:nth-of-type(1) > span {
+    font-size: 0.7rem;
+  }
+  .container > .card:nth-of-type(1) {
+    grid-area: a;
+  }
+  .container > .card:nth-of-type(2) {
+    grid-area: b;
+  }
+  .container > .card:nth-of-type(3) {
+    grid-area: c;
+    display: block;
+  }
+  .container > .card:nth-of-type(4) {
+    grid-area: d;
+    display: block;
+  }
+  .container > .card:nth-of-type(5) {
+    grid-area: e;
+  }
+  .container > .card:nth-of-type(6) {
+    grid-area: f;
+  }
+  .container > .card:nth-of-type(7) {
+    grid-area: g;
+    display: block;
+  }
+  .container > .card:nth-of-type(8) {
+    grid-area: h;
+    display: block;
+  }
+  .container > .card:nth-of-type(9) {
+    grid-area: i;
+  }
+  .container > .card:nth-of-type(10) {
+    grid-area: j;
+  }
+  .container > .card:nth-of-type(11) {
+    grid-area: k;
+  }
+  .container > .card:nth-of-type(12) {
+    grid-area: l;
+    display: block;
+  }
+}
+@media (max-width: 350px) {
+  .container {
+    grid-template-areas:
+      "a b c"
+      "e f g"
+      "i j k";
+  }
+  .container > .card:nth-of-type(4) {
+    grid-area: d;
+    display: none;
+  }
+  .container > .card:nth-of-type(8) {
+    grid-area: h;
+    display: none;
+  }
+  .container > .card:nth-of-type(12) {
+    grid-area: l;
+    display: none;
+  }
+}

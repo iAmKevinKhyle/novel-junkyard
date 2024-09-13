@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novel Junkyard</title>
+
+    <!-- ICON -->
+    <link
+      rel="shortcut icon"
+      href="images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+      type="image/x-icon"
+    />
+    <!-- STYLES LINK -->
+    <link rel="stylesheet" href="styles/default.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/navigation.css" />
+    <link rel="stylesheet" href="styles/hot.css" />
+    <link rel="stylesheet" href="styles/latest.css" />
+    <link rel="stylesheet" href="styles/completed.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- SCRIPT LINKS -->
+    <script src="scripts/history.js" defer></script>
+    <script src="scripts/home.js" defer></script>
+    <script src="scripts/search.js" defer></script>
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/genres.js" defer></script>
+    <script src="scripts/chapter.js" defer></script>
+    <script src="scripts/novel.js" defer></script>
+    <script defer>
+      sessionStorage.setItem("sort-genre", JSON.stringify({ genre: "all" }));
+      sessionStorage.setItem("page", 1);
+      document.title = "Novel Junkyard";
+
+      function clear() {
+        localStorage.clear();
+        sessionStorage.clear();
+      }
+
+      // WARNING: DO NOT UNCOMMENT
+      // clear();
+    </script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="left-side-container">
+        <h3 id="title" class="poppins-semibold">
+          <img
+            id="Logo"
+            src="images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+            alt="Novel Junkyard Logo"
+            height="50"
+            width="50"
+          />
+          <a href="index.html">Novel Junkyard</a>
+        </h3>
+
+        <button class="none" id="menu_button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="right-side-container">
+        <div class="fixed-height-container">
+          <nav id="navigation">
+            <ul id="list">
+              <li>
+                <a onclick="resetPage()" href="pages/latest.html">
+                  latest novels
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="resetPage()"
+                  class="navigation_to_genre"
+                  href="pages/genre.html"
+                >
+                  novel genre
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <input id="search_novel" type="search" placeholder="Search Novel" />
+        </div>
+      </div>
+    </header>
+    <div class="breadcrumbs">
+      <ul class="list">
+        <li><a href="#">home</a> ></li>
+      </ul>
+    </div>
+    <main id="main-content">
+      <div class="container___wrapper">
+        <section class="main_containers" id="reading_container">
+          <div class="title-container">
+            <h5>
+              Your Reading History <i class="fa-solid fa-book-open-reader"></i>
+            </h5>
+          </div>
+          <div class="content_wrapper" id="reading_content_container"></div>
+        </section>
+        <section class="main_containers" id="bookmark_container">
+          <div class="title-container">
+            <h5>Bookmarked <i class="fa-solid fa-book-open-reader"></i></h5>
+          </div>
+          <div class="content_wrapper" id="bookmark_content_container"></div>
+        </section>
+      </div>
+      <section class="main_containers" id="hot_novels">
+        <div class="title-container">
+          <h4>HOTTEST NOVEL <i class="fa-solid fa-fire"></i></h4>
+          <a href="pages/hot.html" class="more_content_button">
+            more <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="card-container">
+          <div class="container" id="hot_novels_home_container"></div>
+        </div>
+      </section>
+      <section class="main_containers" id="latest_novels">
+        <div class="title-container">
+          <h4>LATEST NOVELS <i class="fa-solid fa-bolt"></i></h4>
+          <a href="pages/latest.html" class="more_content_button">
+            more <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="latest-container">
+          <div
+            class="latest-left-content-container"
+            id="latest_novels_home_container"
+          ></div>
+          <aside class="genre-right-content-container">
+            <h4>GENRES <i class="fa-solid fa-angles-down"></i></h4>
+            <div class="genre-container"></div>
+          </aside>
+        </div>
+      </section>
+      <section class="main_containers" id="completed_novels">
+        <div class="title-container">
+          <h4>COMPLETED NOVELS <i class="fa-solid fa-book"></i></h4>
+          <a href="pages/completed.html" class="more_content_button">
+            more <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div
+          class="completed_novels_container"
+          id="completed_novels_home_container"
+        ></div>
+      </section>
+    </main>
+    <footer id="footer">
+      <p>
+        <b>Novel Junkyard</b> Read light novel, web novel, korean novel and
+        chinese novel online for free. You can find hundreds of english
+        translated light novel, web novel, korean novel and chinese novel which
+        are daily updated! Read novels online, read light novel online, read
+        online free, free light novel online.
+      </p>
+    </footer>
+  </body>
+</html>

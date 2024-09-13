@@ -1,0 +1,53 @@
+nav#navigation > ul {
+  gap: 1rem;
+}
+
+nav#navigation > ul > li > a {
+  color: var(--main-txt-color-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: color 300ms ease;
+
+  position: relative;
+}
+
+nav#navigation > ul > li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  transition: transform 300ms ease;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+nav#navigation > ul > li a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+nav#navigation > ul > li a:hover {
+  color: white;
+}
+
+nav#navigation > ul > li {
+  position: relative;
+}
+nav#navigation > ul > li:first-of-type::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: calc(-0.5rem - 1.5px);
+  height: 100%;
+  width: 3px;
+  background-color: var(--main-txt-color-light);
+}
+
+@media (max-width: 624px) {
+  nav#navigation > ul > li:first-of-type::after {
+    display: none;
+  }
+}

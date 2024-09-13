@@ -1,0 +1,105 @@
+.completed_novels_container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  line-height: 1.1;
+}
+
+.completed_card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.15rem;
+  box-shadow: 0 0 3px 1px var(--main-bg-color-dark);
+
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+.completed_card:hover {
+  transform: scale(1.05);
+}
+
+.completed_card > img.completed_novel_cover {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/ 1.5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.1rem;
+}
+.completed_card > span.completed_novel_title {
+  display: block;
+  padding: 0.25rem;
+  text-transform: capitalize;
+  text-align: center;
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 0.85rem;
+  background-color: rgba(29, 29, 29, 0.5);
+  color: white;
+}
+.completed_card > span.completed_novel_detail {
+  background-color: rgba(29, 29, 29, 0.5);
+  color: white;
+  font-size: 0.55rem;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 0.25rem;
+  margin: 0 auto;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 1000px) {
+  .completed_novels_container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .completed_card:nth-of-type(11),
+  .completed_card:nth-of-type(12) {
+    display: none;
+  }
+}
+@media (max-width: 810px) {
+  .completed_novels_container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .completed_card:nth-of-type(11),
+  .completed_card:nth-of-type(12) {
+    display: block;
+  }
+}
+@media (max-width: 630px) {
+  .completed_novels_container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .completed_card:nth-of-type(10),
+  .completed_card:nth-of-type(11),
+  .completed_card:nth-of-type(12) {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .completed_novels_container {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 400px) {
+  .completed_novels_container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  .completed_card:nth-of-type(10),
+  .completed_card:nth-of-type(11),
+  .completed_card:nth-of-type(12) {
+    display: block;
+  }
+}

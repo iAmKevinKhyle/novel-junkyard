@@ -1,0 +1,117 @@
+.latest-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.latest-left-content-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.genre-right-content-container {
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px dotted var(--main-txt-color-dark);
+}
+.row:last-of-type {
+  border-bottom: none;
+}
+
+.row > *:not(:first-child, :last-child) {
+  border-right: 1px dotted var(--main-txt-color-dark);
+}
+.row > * {
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.65rem 0.5rem;
+  padding-left: 0;
+}
+
+.row > i {
+  padding: 0;
+}
+.row > a.novel-title {
+  flex: 4.5;
+  font-size: 0.9rem;
+}
+.row > span.novel-genres {
+  flex: 2;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+.novel-genres > a:not(:last-of-type)::after {
+  content: ",  ";
+}
+.row > a.novel-latest-chapter {
+  flex: 2;
+  font-size: 0.9rem;
+}
+.row > span.novel-update-time {
+  flex: 1.5;
+  font-size: 0.85rem;
+}
+
+.row a {
+  color: var(--main-txt-color-dark);
+}
+.row a:hover {
+  text-decoration: underline;
+}
+
+.genre-right-content-container > h4 {
+  border-bottom: 1px solid var(--main-txt-color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.genre-container > ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.genre-container > ul > li {
+  display: block;
+  padding: 0.15rem 0.25rem;
+}
+.genre-container > ul > li > a {
+  color: var(--main-txt-color-dark);
+  text-transform: capitalize;
+  font-size: 0.75rem;
+}
+.genre-container > ul > li > a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+@media (max-width: 1085px) {
+  .genre-right-content-container {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .row > span.novel-update-time {
+    display: none;
+  }
+  .row > a.novel-latest-chapter {
+    border-right: none;
+  }
+}
+
+@media (max-width: 530px) {
+  .row > a.novel-latest-chapter,
+  .row > a.novel-title {
+    font-size: 0.75rem;
+  }
+
+  .row > span.novel-genres {
+    display: none;
+  }
+}

@@ -1,0 +1,79 @@
+.speak_control_container___wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--main-bg-color-dark);
+  transition: all 300ms ease;
+  padding: 0.5rem;
+}
+.control_toggle_button {
+  position: absolute;
+  top: -50%;
+  right: 10px;
+
+  padding: 0.5rem;
+  background-color: var(--main-bg-color-dark);
+  color: var(--main-txt-color-light);
+  font-size: 1.25rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.speak_settings_container,
+.speak_control_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.speak_control_container > button {
+  font-size: 1.25rem;
+  background-color: transparent;
+  border: none;
+  color: var(--main-txt-color-light);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.speak_control_container > button:hover {
+  text-shadow: 0 0 3px white;
+}
+
+.speak_settings_container {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.speak_settings_container > select {
+  width: 100%;
+  flex: 1;
+  background-color: transparent;
+  color: var(--main-txt-color-light);
+  padding: 0.25rem;
+  border-radius: 0.15rem;
+  cursor: pointer;
+}
+.speak_settings_container > span {
+  width: 30px;
+  text-align: center;
+  color: var(--main-txt-color-light);
+}
+.speak_settings_container > button {
+  background-color: transparent;
+  color: var(--main-txt-color-light);
+  border: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.speak_settings_container > button:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,37 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px;
+  height: 30px;
+  --g: radial-gradient(
+      farthest-side,
+      #0000 calc(95% - 1px),
+      var(--main-txt-color-dark) calc(100% - 1px) 98%,
+      #0000 101%
+    )
+    no-repeat;
+  background: var(--g), var(--g), var(--g);
+  background-size: 10px 10px;
+  animation: l9 1s infinite alternate;
+
+  /* margin: 0 auto; */
+}
+@keyframes l9 {
+  0% {
+    background-position: 0 50%, 50% 50%, 100% 50%;
+  }
+  20% {
+    background-position: 0 0, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0 100%, 50% 0, 100% 50%;
+  }
+  60% {
+    background-position: 0 50%, 50% 100%, 100% 0;
+  }
+  80% {
+    background-position: 0 50%, 50% 50%, 100% 100%;
+  }
+  100% {
+    background-position: 0 50%, 50% 50%, 100% 50%;
+  }
+}

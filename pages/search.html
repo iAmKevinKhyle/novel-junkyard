@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novel Junkyard - Search Result</title>
+
+    <!-- ICON -->
+    <link
+      rel="shortcut icon"
+      href="../images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+      type="image/x-icon"
+    />
+    <!-- STYLES LINK -->
+    <link rel="stylesheet" href="../styles/default.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/pagination.css" />
+    <link rel="stylesheet" href="../styles/search.css" />
+    <link rel="stylesheet" href="../styles/navigation.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- SCRIPT LINKS -->
+    <script src="../scripts/novel.js" defer></script>
+    <script src="../scripts/chapter.js" defer></script>
+    <script src="../scripts/search.js" defer></script>
+    <script src="../scripts/navigation.js" defer></script>
+    <script src="../scripts/pagination.js" defer></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="left-side-container">
+        <h3 id="title" class="poppins-semibold">
+          <img
+            id="Logo"
+            src="../images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+            alt="Novel Junkyard Logo"
+            height="50"
+            width="50"
+          />
+          <a href="../index.html">Novel Junkyard</a>
+        </h3>
+
+        <button class="none" id="menu_button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="right-side-container">
+        <div class="fixed-height-container">
+          <nav id="navigation">
+            <ul id="list">
+              <li>
+                <a onclick="resetPage()" href="latest.html">latest novels</a>
+              </li>
+              <li>
+                <a
+                  onclick="resetPage()"
+                  class="navigation_to_genre"
+                  href="genre.html"
+                  >novel genre</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <input id="search_novel" type="search" placeholder="Search Novel" />
+        </div>
+      </div>
+    </header>
+    <div class="breadcrumbs">
+      <ul class="list">
+        <li><a href="../index.html">home</a> ></li>
+        <li><a href="search.html">search</a> ></li>
+      </ul>
+    </div>
+    <main id="main-content">
+      <section class="main_containers" id="search_results">
+        <div class="title-container">
+          <h4>
+            SEARCH KEYWORD <i class="fa-solid fa-search">: </i>
+            <span class="search_keyword"></span>
+          </h4>
+        </div>
+        <div class="paginaton_container">
+          <button id="first_page">
+            <i class="fa-solid fa-angles-left"></i> <span>First</span>
+          </button>
+          <button id="prev_page"><i class="fa-solid fa-angle-left"></i></button>
+          <div class="pagination">
+            <span>Page </span>
+            <input
+              type="number"
+              name="page_number"
+              id="page_number"
+              min="1"
+              max=""
+              value="1"
+            />
+            <span> of </span>
+            <span class="number_of_all_pages"></span>
+            <span> pages</span>
+          </div>
+          <button id="next_page">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
+          <button id="last_page">
+            <span>Last</span> <i class="fa-solid fa-angles-right"></i>
+          </button>
+        </div>
+        <div class="content-container" id="search_content_container">
+          <div class="error_message" style="display: none">
+            <p>no Match found</p>
+          </div>
+          <!-- <div class="content_row">
+            <div class="wrapper_wrapper">
+              <img
+                src="../images/a-will-eternal.png"
+                alt="a-will-eternal"
+                class="cover"
+                onclick="getNovelInfo(this, true)"
+              />
+              <div class="wrapper">
+                <span>
+                  <i class="fa-solid fa-book"></i>
+                  <a
+                    href="#"
+                    class="novel_title"
+                    onclick="getNovelInfo(this, true)"
+                  >
+                    Forbidden Magic: My Journey
+                  </a>
+                </span>
+                <span><i class="fa-solid fa-pen-nib"></i> How to be Lazy</span>
+              </div>
+            </div>
+            <a href="#" class="latest_chapter"
+              >Chapter 201: OK Lorem ipsum dolor sit amet.</a
+            >
+          </div> -->
+        </div>
+        <div class="paginaton_container">
+          <button id="first_page">
+            <i class="fa-solid fa-angles-left"></i> <span>First</span>
+          </button>
+          <button id="prev_page"><i class="fa-solid fa-angle-left"></i></button>
+          <div class="pagination">
+            <span>Page </span>
+            <input
+              type="number"
+              name="page_number"
+              id="page_number"
+              min="1"
+              max=""
+              value="1"
+            />
+            <span> of </span>
+            <span class="number_of_all_pages"></span>
+            <span> pages</span>
+          </div>
+          <button id="next_page">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
+          <button id="last_page">
+            <span>Last</span> <i class="fa-solid fa-angles-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <p>
+        <b>Novel Junkyard</b> Read light novel, web novel, korean novel and
+        chinese novel online for free. You can find hundreds of english
+        translated light novel, web novel, korean novel and chinese novel which
+        are daily updated! Read novels online, read light novel online, read
+        online free, free light novel online.
+      </p>
+    </footer>
+  </body>
+</html>

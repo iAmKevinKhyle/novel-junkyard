@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novel Junkyard - Novel</title>
+
+    <!-- ICON -->
+    <link
+      rel="shortcut icon"
+      href="../images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+      type="image/x-icon"
+    />
+    <!-- STYLES LINK -->
+    <link rel="stylesheet" href="../styles/default.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/navigation.css" />
+    <link rel="stylesheet" href="../styles/novel.css" />
+    <link rel="stylesheet" href="../styles/latest.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- SCRIPT LINKS -->
+    <script src="../scripts/genres.js" defer></script>
+    <script src="../scripts/search.js" defer></script>
+    <script src="../scripts/chapter.js" defer></script>
+    <script src="../scripts/navigation.js" defer></script>
+    <script src="../scripts/novel.js" defer></script>
+    <script src="../scripts/chapter_list.js" defer></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="left-side-container">
+        <h3 id="title" class="poppins-semibold">
+          <img
+            id="Logo"
+            src="../images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+            alt="Novel Junkyard Logo"
+            height="50"
+            width="50"
+          />
+          <a href="../index.html">Novel Junkyard</a>
+        </h3>
+
+        <button class="none" id="menu_button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="right-side-container">
+        <div class="fixed-height-container">
+          <nav id="navigation">
+            <ul id="list">
+              <li>
+                <a onclick="resetPage()" href="latest.html">latest novels</a>
+              </li>
+              <li>
+                <a
+                  onclick="resetPage()"
+                  class="navigation_to_genre"
+                  href="genre.html"
+                  >novel genre</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <input id="search_novel" type="search" placeholder="Search Novel" />
+        </div>
+      </div>
+    </header>
+    <div class="breadcrumbs">
+      <ul class="list">
+        <li><a href="../index.html">home</a> ></li>
+        <li><a href="latest.html">novel</a> ></li>
+        <li><a href="#" id="breadcrumbs_novel_title">Novel title</a> ></li>
+      </ul>
+    </div>
+    <main id="main-content">
+      <section class="main_containers" id="novel_info">
+        <div class="title-container">
+          <h4>NOVEL INFO <i class="fa-solid fa-book"></i></h4>
+        </div>
+        <div class="content-container">
+          <div class="left-content-container">
+            <div class="cover-container">
+              <img src="" alt="" id="novel_cover_img" />
+            </div>
+            <div class="novel-title-container">
+              <h4 id="novel_title_header"></h4>
+            </div>
+            <div class="info-container">
+              <ul class="info-list" id="novel_info_wrapper"></ul>
+            </div>
+            <div class="action-button-container">
+              <div class="latest_chapter_container">
+                <span>latest chapter:</span>
+                <a
+                  href="javascript:void(0)"
+                  data-title=""
+                  data-chapter=""
+                  data-link=""
+                  onclick="getChapterContent(this, true)"
+                  id="novel_latest_chapter"
+                >
+                </a>
+                <span class="update_time" id="novel_update_time"></span>
+              </div>
+              <div class="continue_reading_container" style="display: none">
+                <span>
+                  continue reading
+                  <i class="fa-solid fa-book-open-reader"></i>
+                </span>
+                <a
+                  href="javascript:void(0)"
+                  data-title=""
+                  data-chapter=""
+                  data-link=""
+                  onclick="getChapterContent(this, true)"
+                  id="novel_current_chapter"
+                ></a>
+              </div>
+              <div class="reading_history_container" style="display: none">
+                <span>
+                  Reading History
+                  <i class="fa-solid fa-clock"></i>
+                </span>
+                <div class="history_wrapper"></div>
+              </div>
+              <div class="button_container">
+                <button
+                  id="novel_start_read"
+                  data-title=""
+                  data-chapter=""
+                  data-link=""
+                  onclick="getChapterContent(this, true)"
+                >
+                  Read Chapter 1
+                  <i class="fa-solid fa-book-open"></i>
+                </button>
+                <button id="add_to_favorite">
+                  <span class="type1">
+                    Bookmark <i class="fa-regular fa-bookmark"></i>
+                  </span>
+                  <span class="type2" style="display: none">
+                    Bookmarked <i class="fa-solid fa-bookmark"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="chapter_list_container">
+                <span>
+                  Chapter List
+                  <i class="fa-solid fa-list"></i>
+                </span>
+                <div class="list_wrapper" id="chapter_list_wrapper"></div>
+                <a
+                  href="javascript:void(0)"
+                  class="show_more_chapter"
+                  data-link=""
+                  onclick="showMoreChapter(this)"
+                >
+                  <span>Show More <i class="fa-solid fa-plus"></i></span>
+                  <div class="loader" style="display: none"></div>
+                </a>
+              </div>
+            </div>
+            <div class="desc-container">
+              <div class="title-container">
+                <h4>DESCRIPTION <i class="fa-solid fa-book"></i></h4>
+              </div>
+              <span id="novel_desc"> </span>
+            </div>
+          </div>
+          <aside class="genre-right-content-container">
+            <h4>GENRES <i class="fa-solid fa-angles-down"></i></h4>
+            <div class="genre-container"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <p>
+        <b>Novel Junkyard</b> Read light novel, web novel, korean novel and
+        chinese novel online for free. You can find hundreds of english
+        translated light novel, web novel, korean novel and chinese novel which
+        are daily updated! Read novels online, read light novel online, read
+        online free, free light novel online.
+      </p>
+    </footer>
+  </body>
+</html>

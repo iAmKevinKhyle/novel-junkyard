@@ -1,0 +1,66 @@
+.chapter_title_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+.chapter_title_container > h3 {
+  text-transform: capitalize;
+  font-size: 1.75rem;
+}
+.chapter_title_container > * {
+  text-align: center;
+}
+
+.chapter_content_container {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+.chapter_content_container > p:not(:last-of-type) {
+  margin-bottom: 0.75rem;
+}
+
+.chapter_nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.chapter_nav > button:disabled {
+  cursor: not-allowed;
+}
+.chapter_nav > button {
+  padding: 0.5rem 1rem;
+  background-color: var(--main-bg-color-dark);
+  color: var(--main-txt-color-light);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.chapter_nav > button:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+@media (max-width: 625px) {
+  .content-container {
+    padding: 0;
+    padding-block: 1rem;
+  }
+  .chapter_nav {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 350px) {
+  .content-container {
+    padding: 1rem 0;
+  }
+  .chapter_nav > button {
+    width: 85px;
+    padding: 0.25rem 2rem;
+  }
+  .chapter_nav > button > span {
+    display: none;
+  }
+}

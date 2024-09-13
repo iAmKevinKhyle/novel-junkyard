@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 12: New Beginning</title>
+
+    <!-- ICON -->
+    <link
+      rel="shortcut icon"
+      href="../images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+      type="image/x-icon"
+    />
+    <!-- STYLES LINK -->
+    <link rel="stylesheet" href="../styles/default.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/navigation.css" />
+    <link rel="stylesheet" href="../styles/chapter.css" />
+    <!-- ! <link rel="stylesheet" href="../styles/read.css" /> -->
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- SCRIPT LINKS -->
+    <!-- !<script src="../scripts/read.js" defer></script> -->
+    <script src="../scripts/chapter.js" defer></script>
+    <script src="../scripts/search.js" defer></script>
+    <script src="../scripts/navigation.js" defer></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="left-side-container">
+        <h3 id="title" class="poppins-semibold">
+          <img
+            id="Logo"
+            src="../images/_7f46ae18-30b2-4bb9-9ec3-2a31833c76a1.jfif"
+            alt="Novel Junkyard Logo"
+            height="50"
+            width="50"
+          />
+          <a href="../index.html">Novel Junkyard</a>
+        </h3>
+
+        <button class="none" id="menu_button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="right-side-container">
+        <div class="fixed-height-container">
+          <nav id="navigation">
+            <ul id="list">
+              <li>
+                <a onclick="resetPage()" href="latest.html">latest novels</a>
+              </li>
+              <li>
+                <a
+                  onclick="resetPage()"
+                  class="navigation_to_genre"
+                  href="genre.html"
+                  >novel genre</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <input id="search_novel" type="search" placeholder="Search Novel" />
+        </div>
+      </div>
+    </header>
+    <div class="breadcrumbs">
+      <ul class="list">
+        <li><a href="../index.html">home</a> ></li>
+        <li><a href="latest.html">novel</a> ></li>
+        <li><a href="novel.html" id="breadcrumbs_novel_title"></a> ></li>
+      </ul>
+    </div>
+    <main id="main-content">
+      <section class="main_containers" id="chapter">
+        <div class="chapter_title_container">
+          <h3 class="novel_title"></h3>
+          <span class="novel_chapter"></span>
+        </div>
+        <div class="chapter_nav">
+          <button id="prev_chapter" onclick="getChapterContent(this, true)">
+            <i class="fa-solid fa-angle-left"></i> <span>Prev Chapter</span>
+          </button>
+          <button id="next_chapter" onclick="getChapterContent(this, true)">
+            <span>Next Chapter</span> <i class="fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+        <div class="content-container">
+          <div class="chapter_content_container">
+            <p class="blocker"></p>
+          </div>
+        </div>
+        <div class="chapter_nav">
+          <button id="prev_chapter" onclick="getChapterContent(this, true)">
+            <i class="fa-solid fa-angle-left"></i> <span>Prev Chapter</span>
+          </button>
+          <button id="next_chapter" onclick="getChapterContent(this, true)">
+            <span>Next Chapter</span> <i class="fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- todo: add this feature in the future -->
+    <!-- todo: read.js -->
+    <div class="speak_control_container___wrapper" style="display: none">
+      <a href="#" class="control_toggle_button">
+        <i class="fa-solid fa-angle-down"></i>
+      </a>
+      <div class="speak_control_container">
+        <button id="backward_button">
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+        <button id="play_button"><i class="fa-solid fa-play"></i></button>
+        <button id="pause_button" style="display: none">
+          <i class="fa-solid fa-pause"></i>
+        </button>
+        <button id="forward_button">
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+        <button id="stop_button"><i class="fa-solid fa-stop"></i></button>
+      </div>
+      <div class="speak_settings_container">
+        <select id="voices_select"></select>
+        <button id="dec_rate"><i class="fa-solid fa-minus"></i></button>
+        <span class="rate">1</span>
+        <button id="inc_rate"><i class="fa-solid fa-plus"></i></button>
+      </div>
+    </div>
+    <!-- todo: add this feature in the future -->
+    <footer id="footer">
+      <p>
+        <b>Novel Junkyard</b> Read light novel, web novel, korean novel and
+        chinese novel online for free. You can find hundreds of english
+        translated light novel, web novel, korean novel and chinese novel which
+        are daily updated! Read novels online, read light novel online, read
+        online free, free light novel online.
+      </p>
+    </footer>
+  </body>
+</html>
