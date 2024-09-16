@@ -7,9 +7,11 @@ const latest_novels_home_container = document.getElementById(
 const completed_novels_home_container = document.getElementById(
   "completed_novels_home_container"
 );
-const hot_novels = "http://192.168.18.32:8080/api/novel/hot";
-const latest_novels = "http://192.168.18.32:8080/api/novel/latest";
-const completed_novels = "http://192.168.18.32:8080/api/novel/completed";
+const hot_novels = "https://novel-scraper-290c.onrender.com/api/novel/hot";
+const latest_novels =
+  "https://novel-scraper-290c.onrender.com/api/novel/latest";
+const completed_novels =
+  "https://novel-scraper-290c.onrender.com/api/novel/completed";
 
 window.addEventListener("load", () => {
   // ? FETCH HOT NOVELS

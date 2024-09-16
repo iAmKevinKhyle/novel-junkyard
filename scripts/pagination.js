@@ -163,9 +163,9 @@ function getNovelByGenre(genre, page) {
   genre = genre.replaceAll("_", "-");
 
   if (genre === "all") {
-    url = `http://192.168.18.32:8080/api/novel/latest/all/${page}`;
+    url = `https://novel-scraper-290c.onrender.com/api/novel/latest/all/${page}`;
   } else {
-    url = `http://192.168.18.32:8080/api/genre/${genre}/${page}`;
+    url = `https://novel-scraper-290c.onrender.com/api/genre/${genre}/${page}`;
   }
 
   fetch(url)
@@ -186,7 +186,7 @@ function getNovelByGenre(genre, page) {
 }
 
 function getAllNovelsByClass(mark, page) {
-  let url = `http://192.168.18.32:8080/api/novel/${mark}/all/${page}`;
+  let url = `https://novel-scraper-290c.onrender.com/api/novel/${mark}/all/${page}`;
 
   fetch(url)
     .then((response) => response.json())
@@ -207,7 +207,7 @@ function getAllNovelsByClass(mark, page) {
 
 function getSearchResults(key, page) {
   key = key.replaceAll(" ", "-");
-  const url = `http://192.168.18.32:8080/api/novel/search/${key}/${page}`;
+  const url = `https://novel-scraper-290c.onrender.com/api/novel/search/${key}/${page}`;
 
   fetch(url)
     .then((response) => response.json())

@@ -9,8 +9,8 @@ const next_chapter = document.querySelectorAll("#next_chapter");
 window.addEventListener("load", () => {
   // return;
   if (location.pathname === "/pages/chapter.html") {
-    const url = "http://192.168.18.32:8080/api/novel/content";
-    const url2 = "http://192.168.18.32:8080/api/novel/navigate";
+    const url = "https://novel-scraper-290c.onrender.com/api/novel/content";
+    const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";
     const chapter = JSON.parse(localStorage.getItem("chapter"));
     const title = chapter.title;
     const chapter_name = chapter.chapter;

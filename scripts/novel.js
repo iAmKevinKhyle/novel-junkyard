@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
   // return;
   const novel_info = JSON.parse(localStorage.getItem("novel_info"));
 
-  const url = "http://192.168.18.32:8080/api/novel/description";
+  const url = "https://novel-scraper-290c.onrender.com/api/novel/description";
   const title = novel_info?.title;
   const link = novel_info?.link;
   const chapter_title = continue_reading_a?.dataset.chapter;
