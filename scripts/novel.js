@@ -33,9 +33,8 @@ window.addEventListener("load", () => {
   const chapter_title = continue_reading_a?.dataset.chapter;
   const chapter_link = continue_reading_a?.dataset.link;
 
+  console.log("I run...", location.pathname);
   if (location.pathname === "/pages/novel.html") {
-    console.log("I run...");
-
     document.title = title;
     const reading = JSON.parse(localStorage.getItem("reading"));
     let bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
