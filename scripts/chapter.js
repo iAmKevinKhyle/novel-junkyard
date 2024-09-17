@@ -7,7 +7,6 @@ const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
 
 window.addEventListener("load", () => {
-  // return;
   if (location.pathname === "/pages/chapter.html") {
     const url = "https://novel-scraper-290c.onrender.com/api/novel/content";
     const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";

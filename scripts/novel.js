@@ -25,7 +25,6 @@ const add_to_favorite = document.getElementById("add_to_favorite");
 const show_more_chapter = document.querySelector(".show_more_chapter");
 
 window.addEventListener("load", () => {
-  // return;
   const novel_info = JSON.parse(localStorage.getItem("novel_info"));
 
   const url = "https://novel-scraper-290c.onrender.com/api/novel/description";
@@ -35,6 +34,8 @@ window.addEventListener("load", () => {
   const chapter_link = continue_reading_a?.dataset.link;
 
   if (location.pathname === "/pages/novel.html") {
+    console.log("I run...");
+
     document.title = title;
     const reading = JSON.parse(localStorage.getItem("reading"));
     let bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
@@ -116,6 +117,8 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((result) => {
+        console.log(result);
+
         const data = result[0];
 
         // ? cover
