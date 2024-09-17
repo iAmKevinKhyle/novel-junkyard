@@ -112,19 +112,19 @@ function handlePaginationCount(com, value) {
     current_page = number_of_pages;
   }
 
-  if (location.pathname === "/pages/genre.html") {
+  if (location.pathname.includes("/pages/genre.html")) {
     getNovelByGenre(current_genre, current_page);
   }
-  if (location.pathname === "/pages/latest.html") {
+  if (location.pathname.includes("/pages/latest.html")) {
     getAllNovelsByClass("latest", current_page);
   }
-  if (location.pathname === "/pages/hot.html") {
+  if (location.pathname.includes("/pages/hot.html")) {
     getAllNovelsByClass("hot", current_page);
   }
-  if (location.pathname === "/pages/completed.html") {
+  if (location.pathname.includes("/pages/completed.html")) {
     getAllNovelsByClass("completed", current_page);
   }
-  if (location.pathname === "/pages/search.html") {
+  if (location.pathname.includes("/pages/search.html")) {
     getSearchResults(search_keyword, current_page);
   }
 
@@ -239,19 +239,19 @@ function setPageNumber(number) {
 }
 
 function removeOldPageContent() {
-  if (location.pathname === "/pages/genre.html") {
+  if (location.pathname.includes("/pages/genre.html")) {
     genre_content_container.innerHTML = "";
   }
-  if (location.pathname === "/pages/latest.html") {
+  if (location.pathname.includes("/pages/latest.html")) {
     latest_content_container.innerHTML = "";
   }
-  if (location.pathname === "/pages/hot.html") {
+  if (location.pathname.includes("/pages/hot.html")) {
     hottest_content_container.innerHTML = "";
   }
-  if (location.pathname === "/pages/completed.html") {
+  if (location.pathname.includes("/pages/completed.html")) {
     completed_content_container.innerHTML = "";
   }
-  if (location.pathname === "/pages/search.html") {
+  if (location.pathname.includes("/pages/search.html")) {
     search_content_container.innerHTML = "";
   }
 }
@@ -296,19 +296,19 @@ function createNewPageContent(data) {
     </a>
   `;
 
-  if (location.pathname === "/pages/genre.html") {
+  if (location.pathname.includes("/pages/genre.html")) {
     genre_content_container.appendChild(div);
   }
-  if (location.pathname === "/pages/latest.html") {
+  if (location.pathname.includes("/pages/latest.html")) {
     latest_content_container.appendChild(div);
   }
-  if (location.pathname === "/pages/hot.html") {
+  if (location.pathname.includes("/pages/hot.html")) {
     hottest_content_container.appendChild(div);
   }
-  if (location.pathname === "/pages/completed.html") {
+  if (location.pathname.includes("/pages/completed.html")) {
     completed_content_container.appendChild(div);
   }
-  if (location.pathname === "/pages/search.html") {
+  if (location.pathname.includes("/pages/search.html")) {
     search_content_container.appendChild(div);
   }
 }

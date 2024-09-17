@@ -9,7 +9,7 @@ search_novel.addEventListener("focus", () => {
       sessionStorage.setItem("search-keyword", value);
       sessionStorage.setItem("page", 1);
 
-      if (location.pathname === "/index.html") {
+      if (location.pathname.includes("/index.html")) {
         location.href = "pages/search.html";
       } else {
         location.href = "search.html";

@@ -285,7 +285,7 @@ function createElementForGenre() {
       item.link
     }">${item.genre.toLocaleLowerCase()}</a>`;
 
-    if (location.pathname === "/pages/genre.html") {
+    if (location.pathname.includes("/pages/genre.html")) {
       const option = document.createElement("option");
 
       option.value = item.genre.toLocaleLowerCase();
@@ -305,14 +305,13 @@ function createElementForGenre() {
 function handleGenreClick(e) {
   const el = e.currentTarget || e;
 
-  // ! this line?
   sessionStorage.setItem("page", 1);
   sessionStorage.setItem(
     "sort-genre",
     JSON.stringify({ genre: el.title.replaceAll(" ", "_") })
   );
 
-  if (location.pathname === "/index.html") {
+  if (location.pathname.includes("/index.html")) {
     location.href = "pages/genre.html";
   } else {
     location.href = "genre.html";
