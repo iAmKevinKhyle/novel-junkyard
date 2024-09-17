@@ -3,8 +3,8 @@ const span = show_more_chapter.children[0];
 const loader = show_more_chapter.children[1];
 let chapter_list = [];
 
-let chapter_limit = 10;
-let chapter_add = 25;
+let chapter_limit = 30;
+let chapter_add = 10;
 
 window.addEventListener("load", () => {
   if (location.pathname === "/pages/novel.html") {
@@ -13,8 +13,7 @@ window.addEventListener("load", () => {
     if (!result || chapter_list.length === 0) {
       sessionStorage.removeItem("first_link");
       setTimeout(() => {
-        const link = sessionStorage.getItem("first_link");
-        getChapterOneByOne(link);
+        loadFirst30Chapters();
         showLoader(span, loader);
       }, 1000);
     }
@@ -34,6 +33,37 @@ function showMoreChapter(e) {
   getChapterOneByOne(link);
 }
 
+function loadFirst30Chapters() {
+  const url = `https://novel-scraper-290c.onrender.com/api/novel/chapters`;
+  const title = JSON.parse(localStorage.getItem("novel_info")).title;
+  const link = JSON.parse(localStorage.getItem("novel_info")).link;
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      link,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      result.forEach((el) => {
+        chapter_list.push({
+          title,
+          chapter: el.chapter,
+          link: el.link,
+        });
+
+        saveLoadedChapterList();
+        removeLoader(span, loader);
+        createChapterListContent(title, el.chapter, el.link);
+      });
+    })
+    .catch((err) => console.log(err));
+}
+
 function getChapterOneByOne(link) {
   if (link === "" || chapter_list.length >= chapter_limit) {
     const start_index = chapter_list_wrapper.children.length;
@@ -48,7 +78,7 @@ function getChapterOneByOne(link) {
     return;
   }
 
-  const url = `http://192.168.18.32:8080/api/novel/navigate`;
+  const url = `https://novel-scraper-290c.onrender.com/api/novel/navigate`;
   const title = JSON.parse(localStorage.getItem("novel_info")).title;
 
   fetch(url, {
@@ -72,7 +102,7 @@ function getChapterOneByOne(link) {
 
       setTimeout(() => {
         getChapterOneByOne(result[1].next_link);
-      }, 250);
+      }, 500);
     })
     .catch((err) => console.log(err));
 }

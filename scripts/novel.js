@@ -176,19 +176,6 @@ window.addEventListener("load", () => {
         if (show_more_chapter.dataset.link === "") {
           show_more_chapter.dataset.link = data.first_chapter_link;
         }
-        sessionStorage.setItem("first_link", data.first_chapter_link);
-        if (chapter_list?.length === 0) {
-          chapter_list?.push({
-            title: data.title,
-            chapter: data.first_chapter_title,
-            link: data.first_chapter_link,
-          });
-        }
-        // createChapterListContent(
-        //   chapter_list[0].title,
-        //   chapter_list[0].chapter,
-        //   chapter_list[0].link
-        // );
 
         // ? novel description
         data.description.split(".").map((item) => {
