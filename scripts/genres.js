@@ -232,7 +232,7 @@ window.addEventListener("load", () => {
     ? JSON.parse(sessionStorage.getItem("sort-genre")).genre
     : "all";
 
-  if (location.pathname === "/pages/genre.html") {
+  if (location.pathname.includes("/pages/genre.html")) {
     genre_selected.innerText = genre.replaceAll("_", " ");
 
     all_options = document.querySelectorAll(".genre_option");

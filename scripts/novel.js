@@ -33,8 +33,7 @@ window.addEventListener("load", () => {
   const chapter_title = continue_reading_a?.dataset.chapter;
   const chapter_link = continue_reading_a?.dataset.link;
 
-  console.log("I run...", location.pathname);
-  if (location.pathname === "/pages/novel.html") {
+  if (location.pathname.includes("/pages/novel.html")) {
     document.title = title;
     const reading = JSON.parse(localStorage.getItem("reading"));
     let bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
@@ -116,8 +115,6 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-
         const data = result[0];
 
         // ? cover

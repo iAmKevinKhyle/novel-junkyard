@@ -31,7 +31,7 @@ let search_keyword;
 window.addEventListener("load", () => {
   current_page = marked_page;
 
-  if (location.pathname === "/pages/genre.html") {
+  if (location.pathname.includes("/pages/genre.html")) {
     const genre = sessionStorage.getItem("sort-genre")
       ? JSON.parse(sessionStorage.getItem("sort-genre")).genre
       : "all";
@@ -47,16 +47,16 @@ window.addEventListener("load", () => {
 
     getNovelByGenre(genre, marked_page);
   }
-  if (location.pathname === "/pages/latest.html") {
+  if (location.pathname.includes("/pages/latest.html")) {
     getAllNovelsByClass("latest", marked_page);
   }
-  if (location.pathname === "/pages/hot.html") {
+  if (location.pathname.includes("/pages/hot.html")) {
     getAllNovelsByClass("hot", marked_page);
   }
-  if (location.pathname === "/pages/completed.html") {
+  if (location.pathname.includes("/pages/completed.html")) {
     getAllNovelsByClass("completed", marked_page);
   }
-  if (location.pathname === "/pages/search.html") {
+  if (location.pathname.includes("/pages/search.html")) {
     search_keyword = sessionStorage.getItem("search-keyword");
     getSearchResults(search_keyword, marked_page);
   }

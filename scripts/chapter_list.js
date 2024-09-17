@@ -7,7 +7,7 @@ let chapter_limit = 30;
 let chapter_add = 10;
 
 window.addEventListener("load", () => {
-  if (location.pathname === "/pages/novel.html") {
+  if (location.pathname.includes("/pages/novel.html")) {
     const result = loadSavedChapterList();
 
     if (!result || chapter_list.length === 0) {

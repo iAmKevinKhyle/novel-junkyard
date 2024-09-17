@@ -19,7 +19,7 @@ search_novel.addEventListener("focus", () => {
 });
 
 window.addEventListener("load", () => {
-  if (location.pathname === "/pages/search.html") {
+  if (location.pathname.includes("/pages/search.html")) {
     search_keyword_span.innerText = sessionStorage.getItem("search-keyword");
   }
 });
