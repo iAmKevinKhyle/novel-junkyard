@@ -128,11 +128,14 @@
   font-weight: bold;
   font-size: 1rem;
 }
-.chapter_list_container > div a,
 .reading_history_container > div a,
 .continue_reading_container > a,
 .latest_chapter_container > a {
   font-size: 0.95rem;
+  color: var(--main-txt-color-dark);
+}
+.chapter_list_container > div a {
+  font-size: 0.8rem;
   color: var(--main-txt-color-dark);
 }
 
@@ -169,24 +172,45 @@
   margin-bottom: 1rem;
 }
 
-.show_more_chapter {
+.paginaton_cl_container {
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.75rem;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--main-txt-color-dark);
-  text-transform: uppercase;
 
-  color: var(--main-txt-color-dark);
+  display: flex;
+
+  gap: 0.5rem;
 }
-.show_more_chapter:hover {
-  color: black;
-  border-color: black;
-  font-weight: bold;
-  border-width: 2px;
+.paginaton_cl_container > button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.45rem;
+  border-radius: 0.25rem;
+  background-color: var(--main-txt-color-dark) !important;
+  color: var(--main-txt-color-light) !important;
+  cursor: pointer;
+}
+.paginaton_cl_container > button:disabled {
+  opacity: 0.5;
+}
+.paginaton_cl_container > .pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem;
+}
+.paginaton_cl_container > .pagination > input[type="number"] {
+  width: 50px;
+  outline: none;
+}
+
+.ch_number_of_all_pages {
+  display: flex;
 }
 
 @media (max-width: 625px) {
@@ -215,6 +239,19 @@
 @media (max-width: 500px) {
   .chapter_list_container > div.list_wrapper {
     grid-template-columns: 1fr;
+  }
+
+  .pagination > span:not(.ch_number_of_all_pages) {
+    display: none;
+  }
+  .pagination > span.ch_number_of_all_pages::before {
+    content: "/ ";
+  }
+  .paginaton_cl_container > button > span {
+    display: none;
+  }
+  .paginaton_cl_container {
+    gap: 0.5rem;
   }
 }
 @media (max-width: 280px) {

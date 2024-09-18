@@ -20,6 +20,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
     <!-- SCRIPT LINKS -->
+    <script src="../scripts/loader.js" defer></script>
     <script src="../scripts/genres.js" defer></script>
     <script src="../scripts/search.js" defer></script>
     <script src="../scripts/chapter.js" defer></script>
@@ -146,21 +147,42 @@
                   </span>
                 </button>
               </div>
-              <div class="chapter_list_container">
+              <div class="chapter_list_container" id="chapter_list_container">
                 <span>
                   Chapter List
                   <i class="fa-solid fa-list"></i>
                 </span>
-                <div class="list_wrapper" id="chapter_list_wrapper"></div>
-                <a
-                  href="javascript:void(0)"
-                  class="show_more_chapter"
-                  data-link=""
-                  onclick="showMoreChapter(this)"
-                >
-                  <span>Show More <i class="fa-solid fa-plus"></i></span>
-                  <div class="loader" style="display: none"></div>
-                </a>
+                <div class="list_wrapper" id="chapter_list_wrapper">
+                  <div class="loader"></div>
+                </div>
+                <div class="paginaton_cl_container">
+                  <button id="ch_first_page" class="ch_buttons">
+                    <i class="fa-solid fa-angles-left"></i> <span>First</span>
+                  </button>
+                  <button id="ch_prev_page" class="ch_buttons">
+                    <i class="fa-solid fa-angle-left"></i>
+                  </button>
+                  <div class="pagination">
+                    <span>Page </span>
+                    <input
+                      type="number"
+                      name="page_number"
+                      id="ch_page_input"
+                      min="1"
+                      max="1"
+                      value="1"
+                    />
+                    <span> of </span>
+                    <span class="ch_number_of_all_pages">1</span>
+                    <span> pages</span>
+                  </div>
+                  <button id="ch_next_page" class="ch_buttons">
+                    <i class="fa-solid fa-angle-right"></i>
+                  </button>
+                  <button id="ch_last_page" class="ch_buttons">
+                    <span>Last</span> <i class="fa-solid fa-angles-right"></i>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="desc-container">

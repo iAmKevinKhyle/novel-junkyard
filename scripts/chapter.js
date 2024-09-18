@@ -8,6 +8,9 @@ const next_chapter = document.querySelectorAll("#next_chapter");
 
 window.addEventListener("load", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
+    // ? show loader
+    displayLoader();
+
     const url = "https://novel-scraper-290c.onrender.com/api/novel/content";
     const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";
     const chapter = JSON.parse(localStorage.getItem("chapter"));
@@ -70,15 +73,18 @@ window.addEventListener("load", () => {
         } else {
           next_chapter.forEach((el) => el.setAttribute("disabled", true));
         }
+
+        // ?remove loader
+        removeLoader();
       });
   }
 });
 
 function getChapterContent(el, pages = false) {
   const title = el.dataset.title.replaceAll("\n", "");
-  const title_link =
-    "https://novelbin.me/novel-book/" +
-    el.dataset.title.toLowerCase().replaceAll("\n", "").replaceAll(" ", "-");
+  let title_link = el.dataset.link.split("/");
+  title_link.pop();
+  title_link = title_link.join("/") + ".html";
   const link = el.dataset.link;
   const chapter = el.dataset.chapter.replaceAll("\n", "");
 
@@ -92,7 +98,7 @@ function getChapterContent(el, pages = false) {
     "novel_info",
     JSON.stringify({
       title,
-      link: link.split("/").slice(0, 5).join("/"),
+      link: title_link,
     })
   );
 

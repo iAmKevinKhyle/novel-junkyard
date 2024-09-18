@@ -22,9 +22,11 @@ const novel_current_chapter = document.getElementById("novel_current_chapter");
 const novel_start_read = document.getElementById("novel_start_read");
 const novel_desc = document.getElementById("novel_desc");
 const add_to_favorite = document.getElementById("add_to_favorite");
-const show_more_chapter = document.querySelector(".show_more_chapter");
 
 window.addEventListener("load", () => {
+  // ?show loader
+  displayLoader();
+
   const novel_info = JSON.parse(localStorage.getItem("novel_info"));
 
   const url = "https://novel-scraper-290c.onrender.com/api/novel/description";
@@ -171,11 +173,6 @@ window.addEventListener("load", () => {
         novel_start_read.dataset.chapter = data.first_chapter_title;
         novel_start_read.dataset.link = data.first_chapter_link;
 
-        // ? chapter list first chapter
-        if (show_more_chapter.dataset.link === "") {
-          show_more_chapter.dataset.link = data.first_chapter_link;
-        }
-
         // ? novel description
         data.description.split(".").map((item) => {
           novel_desc.innerHTML += `<p>${item}.</p>`;
@@ -183,6 +180,9 @@ window.addEventListener("load", () => {
 
         // ? update time
         novel_update_time.innerText = data.update_time;
+
+        // ? remove loader
+        removeLoader();
       })
       .catch((err) => console.log(err));
   }

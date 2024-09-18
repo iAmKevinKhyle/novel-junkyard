@@ -1,219 +1,211 @@
 const genres = [
   {
-    genre: "all",
-    link: "https://novelbin.me/novelbin-genres/all",
+    genre: "All",
+    link: "https://novelfull.net/genre/Action",
   },
   {
-    genre: "ACTION",
-    link: "https://novelbin.me/novelbin-genres/action",
+    genre: "Shounen",
+    link: "https://novelfull.net/genre/Shounen",
   },
   {
-    genre: "ADULT",
-    link: "https://novelbin.me/novelbin-genres/adult",
+    genre: "Harem",
+    link: "https://novelfull.net/genre/Harem",
   },
   {
-    genre: "ADVENTURE",
-    link: "https://novelbin.me/novelbin-genres/adventure",
+    genre: "Comedy",
+    link: "https://novelfull.net/genre/Comedy",
   },
   {
-    genre: "COMEDY",
-    link: "https://novelbin.me/novelbin-genres/comedy",
+    genre: "Martial Arts",
+    link: "https://novelfull.net/genre/Martial+Arts",
   },
   {
-    genre: "DRAMA",
-    link: "https://novelbin.me/novelbin-genres/drama",
+    genre: "School Life",
+    link: "https://novelfull.net/genre/School+Life",
   },
   {
-    genre: "EASTERN",
-    link: "https://novelbin.me/novelbin-genres/eastern",
+    genre: "Mystery",
+    link: "https://novelfull.net/genre/Mystery",
   },
   {
-    genre: "ECCHI",
-    link: "https://novelbin.me/novelbin-genres/ecchi",
+    genre: "Shoujo",
+    link: "https://novelfull.net/genre/Shoujo",
   },
   {
-    genre: "FANFICTION",
-    link: "https://novelbin.me/novelbin-genres/fanfiction",
+    genre: "Romance",
+    link: "https://novelfull.net/genre/Romance",
   },
   {
-    genre: "FANTASY",
-    link: "https://novelbin.me/novelbin-genres/fantasy",
+    genre: "Sci-fi",
+    link: "https://novelfull.net/genre/Sci-fi",
   },
   {
-    genre: "GAME",
-    link: "https://novelbin.me/novelbin-genres/game",
+    genre: "Gender Bender",
+    link: "https://novelfull.net/genre/Gender+Bender",
   },
   {
-    genre: "GENDER BENDER",
-    link: "https://novelbin.me/novelbin-genres/gender-bender",
+    genre: "Mature",
+    link: "https://novelfull.net/genre/Mature",
   },
   {
-    genre: "HAREM",
-    link: "https://novelbin.me/novelbin-genres/harem",
+    genre: "Fantasy",
+    link: "https://novelfull.net/genre/Fantasy",
   },
   {
-    genre: "HISTORICAL",
-    link: "https://novelbin.me/novelbin-genres/historical",
+    genre: "Horror",
+    link: "https://novelfull.net/genre/Horror",
   },
   {
-    genre: "HORROR",
-    link: "https://novelbin.me/novelbin-genres/horror",
+    genre: "Drama",
+    link: "https://novelfull.net/genre/Drama",
   },
   {
-    genre: "ISEKAI",
-    link: "https://novelbin.me/novelbin-genres/isekai",
+    genre: "Tragedy",
+    link: "https://novelfull.net/genre/Tragedy",
   },
   {
-    genre: "JOSEI",
-    link: "https://novelbin.me/novelbin-genres/josei",
+    genre: "Supernatural",
+    link: "https://novelfull.net/genre/Supernatural",
+  },
+  {
+    genre: "Ecchi",
+    link: "https://novelfull.net/genre/Ecchi",
+  },
+  {
+    genre: "Xuanhuan",
+    link: "https://novelfull.net/genre/Xuanhuan",
+  },
+  {
+    genre: "Adventure",
+    link: "https://novelfull.net/genre/Adventure",
+  },
+  {
+    genre: "Action",
+    link: "https://novelfull.net/genre/Action",
+  },
+  {
+    genre: "Psychological",
+    link: "https://novelfull.net/genre/Psychological",
+  },
+  {
+    genre: "Xianxia",
+    link: "https://novelfull.net/genre/Xianxia",
+  },
+  {
+    genre: "Wuxia",
+    link: "https://novelfull.net/genre/Wuxia",
+  },
+  {
+    genre: "Historical",
+    link: "https://novelfull.net/genre/Historical",
+  },
+  {
+    genre: "Slice of Life",
+    link: "https://novelfull.net/genre/Slice+of+Life",
+  },
+  {
+    genre: "Seinen",
+    link: "https://novelfull.net/genre/Seinen",
+  },
+  {
+    genre: "Lolicon",
+    link: "https://novelfull.net/genre/Lolicon",
+  },
+  {
+    genre: "Adult",
+    link: "https://novelfull.net/genre/Adult",
+  },
+  {
+    genre: "Josei",
+    link: "https://novelfull.net/genre/Josei",
+  },
+  {
+    genre: "Sports",
+    link: "https://novelfull.net/genre/Sports",
+  },
+  {
+    genre: "Smut",
+    link: "https://novelfull.net/genre/Smut",
+  },
+  {
+    genre: "Mecha",
+    link: "https://novelfull.net/genre/Mecha",
+  },
+  {
+    genre: "Yaoi",
+    link: "https://novelfull.net/genre/Yaoi",
+  },
+  {
+    genre: "Shounen Ai",
+    link: "https://novelfull.net/genre/Shounen+Ai",
+  },
+  {
+    genre: "Magical Realism",
+    link: "https://novelfull.net/genre/Magical+Realism",
+  },
+  {
+    genre: "Video Games",
+    link: "https://novelfull.net/genre/Video+Games",
+  },
+  {
+    genre: "Martial",
+    link: "https://novelfull.net/genre/Martial",
+  },
+  {
+    genre: "Game",
+    link: "https://novelfull.net/genre/Game",
+  },
+  {
+    genre: "Yuri",
+    link: "https://novelfull.net/genre/Yuri",
+  },
+  {
+    genre: "Magical",
+    link: "https://novelfull.net/genre/Magical",
+  },
+  {
+    genre: "Reincarnation",
+    link: "https://novelfull.net/genre/Reincarnation",
   },
   {
     genre: "LGBT+",
-    link: "https://novelbin.me/novelbin-genres/lgbt+",
+    link: "https://novelfull.net/genre/LGBT%2B",
   },
   {
-    genre: "LITRPG",
-    link: "https://novelbin.me/novelbin-genres/litrpg",
+    genre: "Manhua",
+    link: "https://novelfull.net/genre/Manhua",
   },
   {
-    genre: "MAGIC",
-    link: "https://novelbin.me/novelbin-genres/magic",
+    genre: "Traged",
+    link: "https://novelfull.net/genre/Traged",
   },
   {
-    genre: "MAGICAL REALISM",
-    link: "https://novelbin.me/novelbin-genres/magical-realism",
+    genre: "Isekai",
+    link: "https://novelfull.net/genre/Isekai",
   },
   {
-    genre: "MARTIAL ARTS",
-    link: "https://novelbin.me/novelbin-genres/martial-arts",
+    genre: "Magic",
+    link: "https://novelfull.net/genre/Magic",
   },
   {
-    genre: "MATURE",
-    link: "https://novelbin.me/novelbin-genres/mature",
+    genre: "Shoujo Ai",
+    link: "https://novelfull.net/genre/Shoujo+Ai",
   },
   {
-    genre: "MECHA",
-    link: "https://novelbin.me/novelbin-genres/mecha",
+    genre: "LitRPG",
+    link: "https://novelfull.net/genre/LitRPG",
   },
   {
-    genre: "MODERN LIFE",
-    link: "https://novelbin.me/novelbin-genres/modern-life",
+    genre: "Eastern",
+    link: "https://novelfull.net/genre/Eastern",
   },
   {
-    genre: "MOVIES",
-    link: "https://novelbin.me/novelbin-genres/movies",
+    genre: "System",
+    link: "https://novelfull.net/genre/System",
   },
   {
-    genre: "MYSTERY",
-    link: "https://novelbin.me/novelbin-genres/mystery",
-  },
-  {
-    genre: "OTHER",
-    link: "https://novelbin.me/novelbin-genres/other",
-  },
-  {
-    genre: "PSYCHOLOGICAL",
-    link: "https://novelbin.me/novelbin-genres/psychological",
-  },
-  {
-    genre: "REALISTIC FICTION",
-    link: "https://novelbin.me/novelbin-genres/realistic-fiction",
-  },
-  {
-    genre: "REINCARNATION",
-    link: "https://novelbin.me/novelbin-genres/reincarnation",
-  },
-  {
-    genre: "ROMANCE",
-    link: "https://novelbin.me/novelbin-genres/romance",
-  },
-  {
-    genre: "SCHOOL LIFE",
-    link: "https://novelbin.me/novelbin-genres/school-life",
-  },
-  {
-    genre: "SCI-FI",
-    link: "https://novelbin.me/novelbin-genres/sci-fi",
-  },
-  {
-    genre: "SEINEN",
-    link: "https://novelbin.me/novelbin-genres/seinen",
-  },
-  {
-    genre: "SHOUJO",
-    link: "https://novelbin.me/novelbin-genres/shoujo",
-  },
-  {
-    genre: "SHOUJO AI",
-    link: "https://novelbin.me/novelbin-genres/shoujo-ai",
-  },
-  {
-    genre: "SHOUNEN",
-    link: "https://novelbin.me/novelbin-genres/shounen",
-  },
-  {
-    genre: "SHOUNEN AI",
-    link: "https://novelbin.me/novelbin-genres/shounen-ai",
-  },
-  {
-    genre: "SLICE OF LIFE",
-    link: "https://novelbin.me/novelbin-genres/slice-of-life",
-  },
-  {
-    genre: "SMUT",
-    link: "https://novelbin.me/novelbin-genres/smut",
-  },
-  {
-    genre: "SPORTS",
-    link: "https://novelbin.me/novelbin-genres/sports",
-  },
-  {
-    genre: "SUPERNATURAL",
-    link: "https://novelbin.me/novelbin-genres/supernatural",
-  },
-  {
-    genre: "SYSTEM",
-    link: "https://novelbin.me/novelbin-genres/system",
-  },
-  {
-    genre: "TRAGEDY",
-    link: "https://novelbin.me/novelbin-genres/tragedy",
-  },
-  {
-    genre: "URBAN",
-    link: "https://novelbin.me/novelbin-genres/urban",
-  },
-  {
-    genre: "URBAN LIFE",
-    link: "https://novelbin.me/novelbin-genres/urban-life",
-  },
-  {
-    genre: "VIDEO GAMES",
-    link: "https://novelbin.me/novelbin-genres/video-games",
-  },
-  {
-    genre: "WAR",
-    link: "https://novelbin.me/novelbin-genres/war",
-  },
-  {
-    genre: "WUXIA",
-    link: "https://novelbin.me/novelbin-genres/wuxia",
-  },
-  {
-    genre: "XIANXIA",
-    link: "https://novelbin.me/novelbin-genres/xianxia",
-  },
-  {
-    genre: "XUANHUAN",
-    link: "https://novelbin.me/novelbin-genres/xuanhuan",
-  },
-  {
-    genre: "YAOI",
-    link: "https://novelbin.me/novelbin-genres/yaoi",
-  },
-  {
-    genre: "YURI",
-    link: "https://novelbin.me/novelbin-genres/yuri",
+    genre: "Hentai",
+    link: "https://novelfull.net/genre/Hentai",
   },
 ];
 

@@ -14,6 +14,9 @@ const completed_novels =
   "https://novel-scraper-290c.onrender.com/api/novel/completed";
 
 window.addEventListener("load", () => {
+  // ? add loader
+  displayLoader();
+
   // ? FETCH HOT NOVELS
   fetch(hot_novels)
     .then((response) => response.json())
@@ -39,6 +42,7 @@ window.addEventListener("load", () => {
       json.forEach((item) => {
         createHomeCompletedNovelElements(item);
       });
+      removeLoader();
     })
     .catch((err) => console.log(err));
 });
@@ -67,9 +71,7 @@ function createHomeHotNovelElements(data) {
 }
 function createHomeLatestNovelElements(data) {
   const div = document.createElement("div");
-  const split = data.latest_chapter_link.split("/");
-  const chapter_link =
-    "https://novelsbin.novelmagic.org/book/" + split[4] + "/" + split[5];
+  const chapter_link = data.latest_chapter_link;
 
   const genres = data.genres.split(",");
 

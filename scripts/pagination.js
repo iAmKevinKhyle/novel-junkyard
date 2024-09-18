@@ -132,6 +132,7 @@ function handlePaginationCount(com, value) {
   page_number.forEach((el) => (el.value = current_page));
 
   checkButtonClickability();
+  displayLoader();
 }
 
 function checkButtonClickability() {
@@ -160,7 +161,7 @@ function disableAllButton() {
 
 function getNovelByGenre(genre, page) {
   let url = "";
-  genre = genre.replaceAll("_", "-");
+  genre = genre.replaceAll("_", "+");
 
   if (genre === "all") {
     url = `https://novel-scraper-290c.onrender.com/api/novel/latest/all/${page}`;
@@ -172,6 +173,10 @@ function getNovelByGenre(genre, page) {
     .then((response) => response.json())
     .then((result) => {
       number_of_pages = result[0].pagination;
+      if (number_of_pages === null) {
+        number_of_pages = 1;
+        disableAllButton();
+      }
       setPageNumber(number_of_pages);
 
       removeOldPageContent();
@@ -181,6 +186,7 @@ function getNovelByGenre(genre, page) {
 
         createNewPageContent(data);
       });
+      removeLoader();
     })
     .catch((err) => console.log(err));
 }
@@ -192,6 +198,10 @@ function getAllNovelsByClass(mark, page) {
     .then((response) => response.json())
     .then((result) => {
       number_of_pages = result[0].pagination;
+      if (number_of_pages === null) {
+        number_of_pages = 1;
+        disableAllButton();
+      }
       setPageNumber(number_of_pages);
 
       removeOldPageContent();
@@ -201,12 +211,13 @@ function getAllNovelsByClass(mark, page) {
 
         createNewPageContent(data);
       });
+      removeLoader();
     })
     .catch((err) => console.log(err));
 }
 
 function getSearchResults(key, page) {
-  key = key.replaceAll(" ", "-");
+  key = key.replaceAll(" ", "+");
   const url = `https://novel-scraper-290c.onrender.com/api/novel/search/${key}/${page}`;
 
   fetch(url)
@@ -226,6 +237,7 @@ function getSearchResults(key, page) {
 
         createNewPageContent(data);
       });
+      removeLoader();
     })
     .catch((err) => {
       disableAllButton();
@@ -257,11 +269,15 @@ function removeOldPageContent() {
 }
 
 function createNewPageContent(data) {
-  const { title, link, author, img, latest_chapter, latest_chapter_title } =
-    data;
-  const split = latest_chapter.split("/");
-  const newLink =
-    "https://novelsbin.novelmagic.org/book/" + split[4] + "/" + split[5];
+  const {
+    title,
+    link,
+    author,
+    img,
+    latest_chapter,
+    latest_chapter_title,
+    count,
+  } = data;
   const div = document.createElement("div");
   div.classList.add("content_row");
 
@@ -291,9 +307,7 @@ function createNewPageContent(data) {
         <span><i class="fa-solid fa-pen-nib"></i>${author}</span>
       </div>
     </div>
-    <a href="javascript:void(0)" class="latest_chapter" data-title="${title}" data-chapter="${latest_chapter_title}" data-link="${newLink}" onclick="getChapterContent(this, true)">
-        ${latest_chapter_title}
-    </a>
+    ${hasCountData(count, title, latest_chapter_title, latest_chapter)}
   `;
 
   if (location.pathname.includes("/pages/genre.html")) {
@@ -310,5 +324,19 @@ function createNewPageContent(data) {
   }
   if (location.pathname.includes("/pages/search.html")) {
     search_content_container.appendChild(div);
+  }
+}
+
+function hasCountData(count, title, latest_chapter_title, latest_chapter) {
+  if (count === undefined) {
+    return `
+      <a href="javascript:void(0)" class="latest_chapter" data-title="${title}" data-chapter="${latest_chapter_title}" data-link="${latest_chapter}" onclick="getChapterContent(this, true)">
+          ${latest_chapter_title}
+      </a>`;
+  } else {
+    return `
+      <span class="count_data">
+          ${count}
+      </span>`;
   }
 }
