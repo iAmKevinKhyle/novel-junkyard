@@ -35,12 +35,28 @@ window.addEventListener("load", () => {
       .then((response) => response.json())
       .then((data) => {
         data.map((item, i) => {
-          const p = document.createElement("p");
-          p.classList.add("sentence");
-          p.dataset.index = i;
-          p.innerText = item.p;
+          if (item.p !== undefined) {
+            const p = document.createElement("p");
+            p.classList.add("sentence");
+            p.dataset.index = i;
+            p.innerText = item.p;
 
-          chapter_content_container.appendChild(p);
+            chapter_content_container.appendChild(p);
+          } else if (item.ul !== undefined) {
+            const ul = document.createElement("ul");
+            ul.classList.add("content_list");
+            ul.dataset.index = i;
+            ul.innerHTML = item.ul;
+
+            chapter_content_container.appendChild(ul);
+          } else {
+            const span = document.createElement("span");
+            span.classList.add("others");
+            span.dataset.index = i;
+            span.innerHTML = item.other;
+
+            chapter_content_container.appendChild(span);
+          }
         });
       });
 
