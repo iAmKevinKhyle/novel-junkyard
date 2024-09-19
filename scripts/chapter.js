@@ -6,6 +6,19 @@ const novel_chapter = document.querySelector(".novel_chapter");
 const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
 
+// ? copy from stack overflow
+const debounce = (mainFunction, delay) => {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      mainFunction(...args);
+    }, delay);
+  };
+};
+
+const debounceScrollEvent = debounce(saveScrollY, 1000);
+
 window.addEventListener("load", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
     // ? show loader
@@ -58,7 +71,8 @@ window.addEventListener("load", () => {
             chapter_content_container.appendChild(span);
           }
         });
-      });
+      })
+      .catch((err) => console.log(err));
 
     fetch(url2, {
       method: "POST",
@@ -92,11 +106,27 @@ window.addEventListener("load", () => {
 
         // ?remove loader
         removeLoader();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setTimeout(() => {
+          // ? scroll to save position
+          scrollToSavePositon();
+        }, 500);
       });
   }
 });
 
+window.addEventListener("scroll", () => {
+  if (location.pathname.includes("/pages/chapter.html")) {
+    debounceScrollEvent();
+  }
+});
+
 function getChapterContent(el, pages = false) {
+  // ? reset scroll positon
+  localStorage.setItem("scroll_y", 0);
+
   const title = el.dataset.title.replaceAll("\n", "");
   let title_link = el.dataset.link.split("/");
   title_link.pop();
@@ -197,4 +227,16 @@ function updateBookmarkChapter() {
   });
 
   localStorage.setItem("bookmark", JSON.stringify(bookmark));
+}
+
+function saveScrollY() {
+  localStorage.setItem("scroll_y", window.scrollY);
+}
+
+function scrollToSavePositon() {
+  const pos = localStorage.getItem("scroll_y")
+    ? JSON.parse(localStorage.getItem("scroll_y"))
+    : 0;
+
+  window.scroll(0, pos);
 }

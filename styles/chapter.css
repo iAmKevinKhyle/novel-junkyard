@@ -53,10 +53,10 @@
   gap: 1rem;
 }
 
-.chapter_nav > button:disabled {
+.chapter_nav > a:disabled {
   cursor: not-allowed;
 }
-.chapter_nav > button {
+.chapter_nav > a {
   padding: 0.5rem 1rem;
   background-color: var(--main-bg-color-dark);
   color: var(--main-txt-color-light);
@@ -64,7 +64,7 @@
   cursor: pointer;
 }
 
-.chapter_nav > button:hover:not(:disabled) {
+.chapter_nav > a:hover:not(:disabled) {
   transform: scale(1.05);
 }
 
