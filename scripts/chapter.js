@@ -24,6 +24,9 @@ window.addEventListener("load", () => {
     // ? show loader
     displayLoader();
 
+    // ? prevent server spin down
+    preventServerSpinDown();
+
     const url = "https://novel-scraper-290c.onrender.com/api/novel/content";
     const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";
     const chapter = JSON.parse(localStorage.getItem("chapter"));
@@ -239,4 +242,21 @@ function scrollToSavePositon() {
     : 0;
 
   window.scroll(0, pos);
+}
+
+function preventServerSpinDown() {
+  const time = Math.floor(Math.random() * (800000 - 600000) + 600000);
+
+  if (location.pathname.includes("/pages/chapter.html")) {
+    fetch("https://novel-scraper-290c.onrender.com/")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("SDP (Spin Down Prevention) Protocol Activated!");
+      })
+      .catch((err) => console.log(err));
+  }
+
+  setTimeout(() => {
+    preventServerSpinDown();
+  }, time);
 }
