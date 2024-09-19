@@ -13,6 +13,7 @@ div.fixed-height-container {
 header {
   padding: 1rem 4rem;
   background-color: var(--main-bg-color-dark);
+  box-shadow: 0 0 1px var(--main-txt-color-light);
 }
 
 header h3 {
@@ -35,6 +36,9 @@ header h3 > a {
   border: 1px solid var(--main-txt-color-light);
 }
 
+.breadcrumbs {
+  box-shadow: 0 0 1px var(--main-txt-color-light);
+}
 .breadcrumbs > ul {
   display: flex;
   align-items: center;
