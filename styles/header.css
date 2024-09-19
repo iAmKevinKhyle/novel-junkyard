@@ -35,10 +35,6 @@ header h3 > a {
   border: none;
   border: 1px solid var(--main-txt-color-light);
 }
-
-.breadcrumbs {
-  box-shadow: 0 0 2px var(--main-txt-color-light);
-}
 .breadcrumbs > ul {
   display: flex;
   align-items: center;
@@ -47,6 +43,7 @@ header h3 > a {
   padding-inline: 4rem;
   background-color: var(--main-bg-color-gray);
   color: var(--main-txt-color-dark);
+  box-shadow: 0 0 2px var(--main-txt-color-light);
 }
 
 .breadcrumbs > ul > li > a {
