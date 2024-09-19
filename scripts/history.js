@@ -22,7 +22,7 @@ window.addEventListener("load", () => {
     const { title, link, chapter_title, chapter_link } = item;
     createNewElement(
       title,
-      link.replaceAll(":", "").replaceAll("https", "https:"),
+      link,
       chapter_title,
       chapter_link,
       bookmark_content_container
@@ -33,7 +33,7 @@ window.addEventListener("load", () => {
     const { title, title_link, chapter, link } = item;
     createNewElement(
       title,
-      title_link.replaceAll(":", "").replaceAll("https", "https:"),
+      title_link,
       chapter,
       link,
       reading_content_container

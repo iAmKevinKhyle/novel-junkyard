@@ -53,18 +53,20 @@
   gap: 1rem;
 }
 
-.chapter_nav > a:disabled {
+.chapter_nav > a[disabled="true"] {
   cursor: not-allowed;
+  opacity: 0.7;
 }
 .chapter_nav > a {
   padding: 0.5rem 1rem;
   background-color: var(--main-bg-color-dark);
   color: var(--main-txt-color-light);
   border-radius: 0.25rem;
-  cursor: pointer;
+  /* cursor: pointer; */
+  font-size: 0.9rem;
 }
 
-.chapter_nav > a:hover:not(:disabled) {
+.chapter_nav > a:hover:not(a[disabled="true"]) {
   transform: scale(1.05);
 }
 
@@ -82,11 +84,11 @@
   .content-container {
     padding: 1rem 0;
   }
-  .chapter_nav > button {
+  .chapter_nav > a {
     width: 85px;
     padding: 0.25rem 2rem;
   }
-  .chapter_nav > button > span {
+  .chapter_nav > a > span {
     display: none;
   }
 }

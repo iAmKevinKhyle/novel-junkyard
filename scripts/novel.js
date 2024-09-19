@@ -1,3 +1,4 @@
+const clear_reading_history = document.querySelector(".clear_reading_history");
 const continue_reading_container = document.querySelector(
   ".continue_reading_container"
 );
@@ -39,6 +40,10 @@ window.addEventListener("load", () => {
     document.title = title;
     const reading = JSON.parse(localStorage.getItem("reading"));
     let bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
+
+    clear_reading_history.addEventListener("click", () => {
+      clearReadingHistory();
+    });
 
     add_to_favorite.addEventListener("click", () => {
       if (add_to_favorite.classList.contains("bookmarked")) {
@@ -206,5 +211,20 @@ function getNovelInfo(e, pages = false, addEvent = true) {
     location.href = "novel.html";
   } else {
     location.href = "pages/novel.html";
+  }
+}
+
+function clearReadingHistory() {
+  let text = "Are you sure?\nEither OK or Cancel.";
+
+  if (confirm(text) === true) {
+    let reading = JSON.parse(localStorage.getItem("reading"));
+    const title = JSON.parse(localStorage.getItem("novel_info")).title;
+
+    reading = reading.filter((el) => el.title !== title);
+
+    localStorage.setItem("reading", JSON.stringify(reading));
+
+    location.reload();
   }
 }

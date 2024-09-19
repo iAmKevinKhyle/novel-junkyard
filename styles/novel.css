@@ -119,6 +119,11 @@
   font-size: 0.75rem;
   font-weight: bold;
 }
+.reading_history_container > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .latest_chapter_container > span.update_time {
   font-weight: 100;
 }
@@ -211,6 +216,17 @@
 
 .ch_number_of_all_pages {
   display: flex;
+}
+
+.clear_reading_history {
+  color: red;
+  border: 1px solid red;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+}
+.clear_reading_history:hover {
+  background-color: red;
+  color: var(--main-txt-color-light);
 }
 
 @media (max-width: 625px) {

@@ -17,7 +17,7 @@ const debounce = (mainFunction, delay) => {
   };
 };
 
-const debounceScrollEvent = debounce(saveScrollY, 1000);
+const debounceScrollEvent = debounce(saveScrollY, 5000);
 
 window.addEventListener("load", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
@@ -115,7 +115,7 @@ window.addEventListener("load", () => {
         setTimeout(() => {
           // ? scroll to save position
           scrollToSavePositon();
-        }, 500);
+        }, 1000);
       });
   }
 });
@@ -127,6 +127,10 @@ window.addEventListener("scroll", () => {
 });
 
 function getChapterContent(el, pages = false) {
+  if (el.getAttribute("disabled") === "true") {
+    return;
+  }
+
   // ? reset scroll positon
   localStorage.setItem("scroll_y", 0);
 
