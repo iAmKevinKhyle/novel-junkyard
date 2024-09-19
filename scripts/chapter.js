@@ -249,7 +249,7 @@ function scrollToSavePositon() {
 }
 
 function preventServerSpinDown() {
-  const time = Math.floor(Math.random() * (800000 - 600000) + 600000);
+  const time = Math.floor(Math.random() * (700000 - 600000) + 600000);
 
   if (location.pathname.includes("/pages/chapter.html")) {
     fetch("https://novel-scraper-290c.onrender.com/")

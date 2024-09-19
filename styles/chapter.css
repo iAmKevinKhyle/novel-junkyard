@@ -71,6 +71,9 @@
 }
 
 @media (max-width: 625px) {
+  .main_containers {
+    padding: 1.25rem 0.5rem;
+  }
   .content-container {
     padding: 0;
     padding-block: 1rem;
