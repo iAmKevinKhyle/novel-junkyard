@@ -6,19 +6,6 @@ const novel_chapter = document.querySelector(".novel_chapter");
 const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
 
-// ? copy from stack overflow
-const debounce = (mainFunction, delay) => {
-  let timer;
-  return function (...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      mainFunction(...args);
-    }, delay);
-  };
-};
-
-const debounceScrollEvent = debounce(saveScrollY, 5000);
-
 window.addEventListener("load", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
     // ? show loader
@@ -120,9 +107,15 @@ window.addEventListener("load", () => {
   }
 });
 
-window.addEventListener("scroll", () => {
+window.addEventListener("beforeunload", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
-    debounceScrollEvent();
+    saveScrollY();
+  }
+});
+
+window.addEventListener("blur", () => {
+  if (location.pathname.includes("/pages/chapter.html")) {
+    saveScrollY();
   }
 });
 
@@ -249,7 +242,7 @@ function scrollToSavePositon() {
 }
 
 function preventServerSpinDown() {
-  const time = Math.floor(Math.random() * (700000 - 600000) + 600000);
+  const time = Math.floor(Math.random() * (650000 - 600000) + 600000);
 
   if (location.pathname.includes("/pages/chapter.html")) {
     fetch("https://novel-scraper-290c.onrender.com/")
