@@ -228,7 +228,16 @@ function getSearchResults(key, page) {
         number_of_pages = 1;
         disableAllButton();
       }
+
       setPageNumber(number_of_pages);
+
+      if (result.length === 1) {
+        disableAllButton();
+        error_message.style.display = "block";
+
+        removeLoader();
+        return;
+      }
 
       removeOldPageContent();
 

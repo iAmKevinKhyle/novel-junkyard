@@ -101,7 +101,6 @@ window.addEventListener("load", () => {
       .finally(() => {
         const clicked =
           JSON.parse(localStorage.getItem("clicked_this")) || false;
-        console.log(clicked);
 
         setTimeout(() => {
           if (!clicked) {
@@ -245,8 +244,6 @@ function scrollToSavePositon() {
   const pos = localStorage.getItem("scroll_y")
     ? JSON.parse(localStorage.getItem("scroll_y"))
     : 0;
-
-  alert(pos);
 
   window.scroll(0, pos);
 }
