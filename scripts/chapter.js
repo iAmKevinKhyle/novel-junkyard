@@ -99,9 +99,16 @@ window.addEventListener("load", () => {
       })
       .catch((err) => console.log(err))
       .finally(() => {
+        const clicked =
+          JSON.parse(localStorage.getItem("clicked_this")) || false;
+        console.log(clicked);
+
         setTimeout(() => {
-          // ? scroll to save position
-          scrollToSavePositon();
+          if (!clicked) {
+            // ? scroll to save position
+            scrollToSavePositon();
+          }
+          localStorage.removeItem("clicked_this");
         }, 1000);
       });
   }
@@ -126,6 +133,7 @@ function getChapterContent(el, pages = false) {
 
   // ? reset scroll positon
   localStorage.setItem("scroll_y", 0);
+  localStorage.setItem("clicked_this", true);
 
   const title = el.dataset.title.replaceAll("\n", "");
   let title_link = el.dataset.link.split("/");
@@ -237,6 +245,8 @@ function scrollToSavePositon() {
   const pos = localStorage.getItem("scroll_y")
     ? JSON.parse(localStorage.getItem("scroll_y"))
     : 0;
+
+  alert(pos);
 
   window.scroll(0, pos);
 }
