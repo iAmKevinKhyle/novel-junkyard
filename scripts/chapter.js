@@ -118,23 +118,23 @@ window.addEventListener("beforeunload", () => {
   }
 });
 
-// window.addEventListener("visibilitychange", () => {
-//   if (location.pathname.includes("/pages/chapter.html")) {
-//     saveScrollY();
-//   }
-// });
-
-// window.addEventListener("blur", () => {
-//   if (location.pathname.includes("/pages/chapter.html")) {
-//     saveScrollY();
-//   }
-// });
-
-window.addEventListener("scroll", () => {
+window.addEventListener("visibilitychange", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
-    handleScrollEvent();
+    saveScrollY();
   }
 });
+
+window.addEventListener("blur", () => {
+  if (location.pathname.includes("/pages/chapter.html")) {
+    saveScrollY();
+  }
+});
+
+// window.addEventListener("scroll", () => {
+//   if (location.pathname.includes("/pages/chapter.html")) {
+//     handleScrollEvent();
+//   }
+// });
 
 function getChapterContent(el, pages = false) {
   if (el.getAttribute("disabled") === "true") {
