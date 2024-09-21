@@ -116,9 +116,21 @@ window.addEventListener("beforeunload", () => {
   }
 });
 
-window.addEventListener("visibilitychange", () => {
+// window.addEventListener("visibilitychange", () => {
+//   if (location.pathname.includes("/pages/chapter.html")) {
+//     saveScrollY();
+//   }
+// });
+
+// window.addEventListener("blur", () => {
+//   if (location.pathname.includes("/pages/chapter.html")) {
+//     saveScrollY();
+//   }
+// });
+
+window.addEventListener("scroll", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
-    saveScrollY();
+    handleScrollEvent();
   }
 });
 
@@ -178,16 +190,12 @@ function saveReadingHistory(title, title_link, chapter, link) {
         item.history = item.history.slice(1);
       }
 
-      const history = item.history;
-      const len = history.length;
-
-      if (history[len - 1].chapter !== chapter) {
-        item.history.push({
-          title,
-          chapter,
-          link,
-        });
-      }
+      item.history = item.history.filter((el) => el.chapter !== chapter);
+      item.history.push({
+        title,
+        chapter,
+        link,
+      });
     }
   });
 
@@ -261,3 +269,15 @@ function preventServerSpinDown() {
     preventServerSpinDown();
   }, time);
 }
+
+function debounce(callback, delay) {
+  let timer;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback();
+    }, delay);
+  };
+}
+
+const handleScrollEvent = debounce(saveScrollY, 1000);
