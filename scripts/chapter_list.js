@@ -184,7 +184,11 @@ function getChapterListPageOnBookmark() {
 
   bookmark?.map((el) => {
     if (title === el.title) {
-      num = el.page;
+      if (el.page === undefined) {
+        num = 1;
+      } else {
+        num = el.page;
+      }
     }
   });
 
