@@ -7,13 +7,15 @@ const ch_pages = document.querySelector(".ch_number_of_all_pages");
 const ch_page_input = document.querySelector("#ch_page_input");
 const ch_buttons = document.querySelectorAll(".ch_buttons");
 
-let page = 1;
+let page = getChapterListPageOnBookmark();
 let number_pages = 1;
 
 window.addEventListener("load", () => {
   if (location.pathname.includes("/pages/novel.html")) {
     showCHLoader();
-    loadChapters(page);
+    setTimeout(() => {
+      loadChapters(page);
+    }, 2000);
   }
 });
 ch_buttons.forEach((btn) =>
@@ -63,6 +65,10 @@ ch_page_input.addEventListener("change", () => {
 });
 
 function loadChapters(num) {
+  // ? save chapter list page number
+  saveChapterListPageOnBookmark(num);
+  ch_page_input.value = num;
+
   const url = `https://novel-scraper-290c.onrender.com/api/novel/chapters/${num}`;
   const title = JSON.parse(localStorage.getItem("novel_info")).title;
   const link = JSON.parse(localStorage.getItem("novel_info")).link;
@@ -156,4 +162,31 @@ function scrollToTopContainer() {
   const top = container.getBoundingClientRect().top + window.scrollY;
 
   window.scrollTo(0, top - 20);
+}
+
+function saveChapterListPageOnBookmark(num) {
+  const title = JSON.parse(localStorage.getItem("novel_info")).title;
+  let bookmark = JSON.parse(localStorage.getItem("bookmark"));
+
+  bookmark?.map((el) => {
+    if (title === el.title) {
+      el.page = num;
+    }
+  });
+
+  localStorage.setItem("bookmark", JSON.stringify(bookmark));
+}
+
+function getChapterListPageOnBookmark() {
+  const title = JSON.parse(localStorage.getItem("novel_info")).title;
+  let bookmark = JSON.parse(localStorage.getItem("bookmark"));
+  let num = 1;
+
+  bookmark?.map((el) => {
+    if (title === el.title) {
+      num = el.page;
+    }
+  });
+
+  return num;
 }

@@ -103,6 +103,8 @@ window.addEventListener("load", () => {
           if (!clicked) {
             // ? scroll to save position
             scrollToSavePositon();
+          } else {
+            localStorage.setItem("scroll_y", 0);
           }
           localStorage.removeItem("clicked_this");
         }, 1000);
@@ -139,8 +141,7 @@ function getChapterContent(el, pages = false) {
     return;
   }
 
-  // ? reset scroll positon
-  localStorage.setItem("scroll_y", 0);
+  // ? set clicked to true so prevent scroll
   localStorage.setItem("clicked_this", true);
 
   const title = el.dataset.title.replaceAll("\n", "");
@@ -280,4 +281,4 @@ function debounce(callback, delay) {
   };
 }
 
-const handleScrollEvent = debounce(saveScrollY, 1000);
+const handleScrollEvent = debounce(saveScrollY, 500);
