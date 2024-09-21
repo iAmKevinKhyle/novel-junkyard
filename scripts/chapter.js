@@ -116,10 +116,9 @@ window.addEventListener("beforeunload", () => {
   }
 });
 
-window.addEventListener("blur", () => {
+window.addEventListener("visibilitychange", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
     saveScrollY();
-    alert("blur");
   }
 });
 
