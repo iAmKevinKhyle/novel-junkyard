@@ -6,6 +6,8 @@ const novel_chapter = document.querySelector(".novel_chapter");
 const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
 
+let fetching = true;
+
 window.addEventListener("load", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
     // ? show loader
@@ -98,6 +100,7 @@ window.addEventListener("load", () => {
       .finally(() => {
         const clicked =
           JSON.parse(localStorage.getItem("clicked_this")) || false;
+        fetching = false;
 
         setTimeout(() => {
           if (!clicked) {
@@ -243,6 +246,8 @@ function updateBookmarkChapter() {
 }
 
 function saveScrollY() {
+  if (fetching) return;
+
   localStorage.setItem("scroll_y", window.scrollY);
 }
 

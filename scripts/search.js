@@ -4,7 +4,29 @@ const search_keyword_span = document.querySelector(".search_keyword");
 search_novel.addEventListener("focus", () => {
   search_novel.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      const value = e.target.value;
+      const format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
+      let value = e.target.value;
+
+      if (value === "clear/all") {
+        localStorage.clear();
+        sessionStorage.clear();
+        location.reload();
+        return;
+      }
+      if (value === "clear/reading") {
+        localStorage.removeItem("reading");
+        location.reload();
+        return;
+      }
+      if (value === "clear/bookmark") {
+        localStorage.removeItem("bookmark");
+        location.reload();
+        return;
+      }
+
+      if (format.test(value)) {
+        value = value.replace(format, "");
+      }
 
       sessionStorage.setItem("search-keyword", value);
       sessionStorage.setItem("page", 1);
