@@ -1,0 +1,51 @@
+/* dark mode */
+header {
+  border-bottom: 1px dotted var(--main-txt-color-light) !important;
+  /* box-shadow: 0 0 5px 10px var(--main-txt-color-light); */
+}
+header,
+footer,
+main,
+body,
+.breadcrumbs > ul {
+  background-color: var(--main-bg-color-dark) !important;
+}
+
+select,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+li,
+i {
+  color: var(--main-txt-color-light) !important;
+}
+
+.genre-container li > a {
+  background-color: var(--main-bg-color-dark) !important;
+}
+.genre-container li > a:hover {
+  text-decoration: underline;
+}
+.genre-container li:has(> a.active) {
+  text-decoration: underline;
+}
+
+::placeholder,
+input {
+  background-color: var(--main-txt-color-dark) !important;
+  color: var(--main-txt-color-light) !important;
+}
+
+button {
+  background-color: var(--main-txt-color-dark) !important;
+}
+
+.title-container {
+  border-color: var(--main-txt-color-light) !important;
+}
+/* dark mode */

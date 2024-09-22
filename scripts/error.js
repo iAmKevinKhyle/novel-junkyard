@@ -9,6 +9,10 @@ window.addEventListener("load", () => {
     removeSavedErrorStats();
   } else {
     const errorStats = JSON.parse(localStorage.getItem("error"));
+    if (!errorStats) {
+      location.href = "index.html";
+    }
+
     const msg = errorStats.msg;
     const name = errorStats.name;
     const title = `${name}: ${msg}`;

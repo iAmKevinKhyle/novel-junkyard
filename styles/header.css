@@ -43,7 +43,7 @@ header h3 > a {
   padding-inline: 4rem;
   background-color: var(--main-bg-color-gray);
   color: var(--main-txt-color-dark);
-  border-bottom: 1px dotted var(--main-txt-color-light);
+  border-bottom: 1px solid var(--main-txt-color-light);
 }
 
 .breadcrumbs > ul > li > a {

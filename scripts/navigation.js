@@ -31,3 +31,24 @@ window.addEventListener("resize", () => {
 function resetPage() {
   sessionStorage.setItem("page", 1);
 }
+
+// ? DarkMode???
+window.addEventListener("DOMContentLoaded", () => {
+  const darkmode = JSON.parse(localStorage.getItem("darkmode")) || false;
+
+  if (!darkmode) {
+    return;
+  }
+
+  const path = location.pathname;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+
+  if (path.includes("/index.html") || path.includes("/error.html")) {
+    link.href = "styles/darkmode.css";
+  } else {
+    link.href = "../styles/darkmode.css";
+  }
+
+  document.head.appendChild(link);
+});

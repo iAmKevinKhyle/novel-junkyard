@@ -7,19 +7,29 @@ search_novel.addEventListener("focus", () => {
       const format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
       let value = e.target.value;
 
-      if (value === "clear/all") {
+      if (value == "clear/all") {
         localStorage.clear();
         sessionStorage.clear();
         location.reload();
         return;
       }
-      if (value === "clear/reading") {
+      if (value == "clear/reading") {
         localStorage.removeItem("reading");
         location.reload();
         return;
       }
-      if (value === "clear/bookmark") {
+      if (value == "clear/bookmark") {
         localStorage.removeItem("bookmark");
+        location.reload();
+        return;
+      }
+      if (value == "darkmode/true") {
+        localStorage.setItem("darkmode", true);
+        location.reload();
+        return;
+      }
+      if (value == "darkmode/false") {
+        localStorage.setItem("darkmode", false);
         location.reload();
         return;
       }
