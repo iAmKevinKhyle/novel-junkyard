@@ -82,8 +82,13 @@ function loadChapters(num) {
       link,
     }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((result) => {
+      redirectIfHasError(fetchStatus, result);
+
       result.forEach((el, i) => {
         if (i === 0) {
           if (el.pagination === null) {

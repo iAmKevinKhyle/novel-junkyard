@@ -23,7 +23,6 @@ search_novel.addEventListener("focus", () => {
         location.reload();
         return;
       }
-
       if (format.test(value)) {
         value = value.replace(format, "");
       }
@@ -31,7 +30,10 @@ search_novel.addEventListener("focus", () => {
       sessionStorage.setItem("search-keyword", value);
       sessionStorage.setItem("page", 1);
 
-      if (location.pathname.includes("/index.html")) {
+      const indexPage = location.pathname.includes("/index.html");
+      const errorPage = location.pathname.includes("/error.html");
+
+      if (indexPage || errorPage) {
         location.href = "pages/search.html";
       } else {
         location.href = "search.html";

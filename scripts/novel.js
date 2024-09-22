@@ -120,8 +120,13 @@ window.addEventListener("load", () => {
         link,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        fetchStatus = response.status;
+        return response.json();
+      })
       .then((result) => {
+        redirectIfHasError(fetchStatus, result);
+
         const data = result[0];
 
         // ? cover

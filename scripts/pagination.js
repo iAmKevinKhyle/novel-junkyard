@@ -170,8 +170,13 @@ function getNovelByGenre(genre, page) {
   }
 
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((result) => {
+      redirectIfHasError(fetchStatus, result);
+
       number_of_pages = result[0].pagination;
       if (number_of_pages === null) {
         number_of_pages = 1;
@@ -195,8 +200,13 @@ function getAllNovelsByClass(mark, page) {
   let url = `https://novel-scraper-290c.onrender.com/api/novel/${mark}/all/${page}`;
 
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((result) => {
+      redirectIfHasError(fetchStatus, result);
+
       number_of_pages = result[0].pagination;
       if (number_of_pages === null) {
         number_of_pages = 1;
@@ -221,8 +231,13 @@ function getSearchResults(key, page) {
   const url = `https://novel-scraper-290c.onrender.com/api/novel/search/${key}/${page}`;
 
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((result) => {
+      redirectIfHasError(fetchStatus, result);
+
       number_of_pages = result[0].pagination;
       if (number_of_pages === null) {
         number_of_pages = 1;

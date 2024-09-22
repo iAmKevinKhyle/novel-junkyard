@@ -19,26 +19,45 @@ window.addEventListener("load", () => {
 
   // ? FETCH HOT NOVELS
   fetch(hot_novels)
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((json) => {
+      redirectIfHasError(fetchStatus, json);
+
       json.forEach((item) => {
         createHomeHotNovelElements(item);
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+    });
+
   // ? FETCH LATEST NOVELS
   fetch(latest_novels)
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((json) => {
+      redirectIfHasError(fetchStatus, json);
+
       json.forEach((item) => {
         createHomeLatestNovelElements(item);
       });
     })
     .catch((err) => console.log(err));
+
   // ? FETCH COMPLETED NOVELS
   fetch(completed_novels)
-    .then((response) => response.json())
+    .then((response) => {
+      fetchStatus = response.status;
+      return response.json();
+    })
     .then((json) => {
+      redirectIfHasError(fetchStatus, json);
+
       json.forEach((item) => {
         createHomeCompletedNovelElements(item);
       });

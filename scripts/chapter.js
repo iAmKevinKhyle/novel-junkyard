@@ -37,8 +37,13 @@ window.addEventListener("load", () => {
         link,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        fetchStatus = response.status;
+        return response.json();
+      })
       .then((data) => {
+        redirectIfHasError(fetchStatus, data);
+
         data.map((item, i) => {
           if (item.p !== undefined) {
             const p = document.createElement("p");
@@ -72,8 +77,13 @@ window.addEventListener("load", () => {
         link,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        fetchStatus = response.status;
+        return response.json();
+      })
       .then((data) => {
+        redirectIfHasError(fetchStatus, data);
+
         if (!data[0].prev_isDisabled) {
           prev_chapter.forEach((el) => {
             el.dataset.title = title;
