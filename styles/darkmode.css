@@ -34,6 +34,11 @@ i {
 .genre-container li:has(> a.active) {
   text-decoration: underline;
 }
+.darkmode_btn:hover > i,
+.darkmode_btn:hover::after,
+a:hover {
+  color: white !important;
+}
 
 ::placeholder,
 input {
@@ -47,5 +52,10 @@ button {
 
 .title-container {
   border-color: var(--main-txt-color-light) !important;
+}
+
+.hlc_navigation_container > a.active {
+  border-top: 1px dotted var(--main-txt-color-light);
+  border-bottom: 1px dotted var(--main-txt-color-light);
 }
 /* dark mode */

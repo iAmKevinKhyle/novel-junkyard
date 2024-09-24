@@ -143,8 +143,8 @@ input[type="number"] {
   border-bottom: 1px dotted var(--main-txt-color-dark);
 }
 .content_row img {
-  height: 80px;
-  width: 150px;
+  height: 100px;
+  width: 100%;
   object-fit: cover;
   object-position: center;
   cursor: pointer;
@@ -161,9 +161,10 @@ input[type="number"] {
   text-decoration: underline;
 }
 .wrapper_wrapper {
-  display: flex;
+  display: grid;
   gap: 0.5rem;
   align-items: center;
+  grid-template-columns: 125px 1fr;
 }
 .wrapper {
   display: flex;
@@ -183,6 +184,24 @@ input[type="number"] {
   font-style: italic;
 }
 
+.hlc_navigation_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.hlc_navigation_container > a {
+  flex: 1;
+  border: 1px dotted var(--main-bg-color-dark);
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--main-txt-color-dark);
+}
+.hlc_navigation_container > a.active {
+  background-color: var(--main-bg-color-dark);
+  color: var(--main-txt-color-light);
+  border: none;
+}
+
 @media (max-width: 500px) {
   input[type="number"] {
     width: 20px;
@@ -195,5 +214,8 @@ input[type="number"] {
   }
   .content-container {
     padding: 1rem 0;
+  }
+  .wrapper_wrapper {
+    grid-template-columns: auto auto;
   }
 }

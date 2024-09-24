@@ -1,6 +1,7 @@
 const menu = document.getElementById("menu_button");
 const container = document.querySelector(".right-side-container");
 const genre_nav_button = document.querySelector(".navigation_to_genre");
+const darkmodeBTN = document.querySelector(".navigation_to_darkmode");
 
 genre_nav_button.addEventListener("click", () => {
   sessionStorage.setItem("sort-genre", JSON.stringify({ genre: "all" }));
@@ -35,9 +36,14 @@ function resetPage() {
 // ? DarkMode???
 window.addEventListener("DOMContentLoaded", () => {
   const darkmode = JSON.parse(localStorage.getItem("darkmode")) || false;
+  const sun = darkmodeBTN.querySelector(".sun");
+  const moon = darkmodeBTN.querySelector(".moon");
 
   if (!darkmode) {
+    sun.classList.add("none");
     return;
+  } else {
+    moon.classList.add("none");
   }
 
   const path = location.pathname;
@@ -51,4 +57,15 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   document.head.appendChild(link);
+});
+
+darkmodeBTN.addEventListener("click", (e) => {
+  const target = e.target;
+
+  if (target.classList.contains("sun")) {
+    localStorage.setItem("darkmode", false);
+  } else {
+    localStorage.setItem("darkmode", true);
+  }
+  location.reload();
 });

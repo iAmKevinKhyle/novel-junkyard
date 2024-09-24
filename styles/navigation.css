@@ -36,7 +36,7 @@ nav#navigation > ul > li a:hover {
 nav#navigation > ul > li {
   position: relative;
 }
-nav#navigation > ul > li:first-of-type::after {
+nav#navigation > ul > li:not(:last-of-type)::after {
   content: "";
   position: absolute;
   top: 0;
@@ -46,8 +46,18 @@ nav#navigation > ul > li:first-of-type::after {
   background-color: var(--main-txt-color-light);
 }
 
+.navigation_to_darkmode > span.none {
+  display: none;
+}
+.navigation_to_darkmode > span.sun::after {
+  content: "Light";
+}
+.navigation_to_darkmode > span.moon::after {
+  content: "Dark";
+}
+
 @media (max-width: 624px) {
-  nav#navigation > ul > li:first-of-type::after {
+  nav#navigation > ul > li::after {
     display: none;
   }
 }

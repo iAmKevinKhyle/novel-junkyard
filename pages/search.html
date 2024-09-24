@@ -61,15 +61,24 @@
           <nav id="navigation">
             <ul id="list">
               <li>
-                <a onclick="resetPage()" href="latest.html">latest novels</a>
+                <a onclick="resetPage()" href="latest.html">novels</a>
+              </li>
+              <li>
+                <a class="navigation_to_genre" href="genre.html">novel genre</a>
               </li>
               <li>
                 <a
                   onclick="resetPage()"
-                  class="navigation_to_genre"
-                  href="genre.html"
-                  >novel genre</a
+                  class="navigation_to_darkmode"
+                  href="javascript:void(0)"
                 >
+                  <span class="moon darkmode_btn">
+                    <i class="fa-solid fa-moon moon"></i>
+                  </span>
+                  <span class="sun darkmode_btn">
+                    <i class="fa-solid fa-sun sun"></i>
+                  </span>
+                </a>
               </li>
             </ul>
           </nav>
