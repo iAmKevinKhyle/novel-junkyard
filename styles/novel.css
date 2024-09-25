@@ -255,7 +255,9 @@
 
 @media (max-width: 500px) {
   .chapter_list_container > div.list_wrapper {
+    grid-auto-flow: row;
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 
   .pagination > span:not(.ch_number_of_all_pages) {
