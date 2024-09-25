@@ -157,7 +157,8 @@
 }
 .chapter_list_container > div.list_wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(25, 1fr);
   gap: 0 2rem;
 }
 .reading_history_container > div.history_wrapper > span,

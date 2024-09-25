@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
           if (item.p !== undefined) {
             const p = document.createElement("p");
             p.classList.add("sentence");
-            p.innerText = item.p;
+            p.innerHTML = item.p;
 
             chapter_content_container.appendChild(p);
           } else if (item.ul !== undefined) {
