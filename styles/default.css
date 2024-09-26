@@ -234,6 +234,9 @@ input[type="number"] {
 }
 
 @media (max-width: 500px) {
+  .label_container {
+    display: none;
+  }
   input[type="number"] {
     width: 20px;
   }
