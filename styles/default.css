@@ -214,7 +214,13 @@ input[type="number"] {
   gap: 0.5rem;
 }
 .label_container.negative {
-  left: calc(100% + 5px);
+  all: unset;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+
+  display: inline-flex;
+  vertical-align: text-top;
+  gap: 0.5rem;
 }
 .label_container > span {
   padding: 0.15rem;
@@ -234,9 +240,6 @@ input[type="number"] {
 }
 
 @media (max-width: 500px) {
-  .label_container {
-    display: none;
-  }
   input[type="number"] {
     width: 20px;
   }
