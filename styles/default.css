@@ -202,6 +202,37 @@ input[type="number"] {
   border: none;
 }
 
+.label_container {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+
+  display: flex;
+  gap: 0.5rem;
+}
+.label_container.negative {
+  left: calc(100% + 5px);
+}
+.label_container > span {
+  padding: 0.15rem;
+  border-radius: 0.25rem;
+}
+.label_container > span.label_hot {
+  color: red !important;
+  border: 1px solid red;
+}
+.label_container > span.label_full {
+  color: lime !important;
+  border: 1px solid lime;
+}
+.label_container > span.label_new {
+  color: skyblue !important;
+  border: 1px solid skyblue;
+}
+
 @media (max-width: 500px) {
   input[type="number"] {
     width: 20px;

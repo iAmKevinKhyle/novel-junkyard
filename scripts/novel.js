@@ -14,6 +14,8 @@ const continue_reading_a = document.querySelector(
 const breadcrumbs_novel_title = document.getElementById(
   "breadcrumbs_novel_title"
 );
+const rating_star = document.querySelector(".rating_container > .stars_holder");
+const rating_text = document.querySelector(".rating_container > .text");
 const novel_cover_img = document.getElementById("novel_cover_img");
 const novel_title_header = document.getElementById("novel_title_header");
 const novel_info_wrapper = document.getElementById("novel_info_wrapper");
@@ -128,6 +130,11 @@ window.addEventListener("load", () => {
         redirectIfHasError(fetchStatus, result);
 
         const data = result[0];
+        const q = data.rating[0];
+        const w = data.rating[1];
+        const e = data.rating[2];
+        const rating = parseInt(q);
+        let stars = "";
 
         // ? cover
         novel_cover_img.src = data.img;
@@ -136,6 +143,21 @@ window.addEventListener("load", () => {
         // ? title
         novel_title_header.innerText = data.title;
         novel_title_header.dataset.id = data.id;
+
+        // ? rating
+        for (let i = 0; i <= rating; i++) {
+          if (q < i + 1 && q > i) {
+            stars += `<i class="fa-solid fa-star-half title="star-${
+              q % i
+            }"></i>`;
+          } else {
+            stars += `<i class="fa-solid fa-star star-${i + 1}" title="star-${
+              i + 1
+            }"></i>`;
+          }
+        }
+        rating_star.innerHTML = stars;
+        rating_text.innerText = `Rating: ${q}/${w} form ${e} ratings`;
 
         // ? infos
         data.attr.map((item) => {
@@ -184,7 +206,7 @@ window.addEventListener("load", () => {
         novel_start_read.dataset.link = data.first_chapter_link;
 
         // ? novel description
-        data.description.split(".").map((item) => {
+        data.description.split(/(?<=[.?])/g).map((item) => {
           novel_desc.innerHTML += `<p>${item}.</p>`;
         });
 

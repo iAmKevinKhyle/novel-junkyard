@@ -114,13 +114,27 @@ function createHomeLatestNovelElements(data) {
 
   div.innerHTML = `
         <i class="fa-solid fa-caret-right"></i>
-        <a href="javascript:void(0)" class="novel-title" data-title="${data.title}" data-link="${data.link}" onclick="getNovelInfo(this, false, false)">
-            ${data.title}
-        </a>
+        <div class="link_holder">
+          <a href="javascript:void(0)" class="novel-title" data-title="${
+            data.title
+          }" data-link="${
+    data.link
+  }" onclick="getNovelInfo(this, false, false)">
+              ${data.title}
+
+          </a>
+          <span class="label_container">
+            ${createLabelTitle(data.label_hot, data.label_full, data.label_new)}
+          </span>
+        </div>
 
         <span class="novel-genres">${elements}</span>
         
-        <a href="javascript:void(0)" class="novel-latest-chapter" data-title="${data.title}" data-chapter="${data.latest_chapter}" data-link="${chapter_link}" onclick="getChapterContent(this)">
+        <a href="javascript:void(0)" class="novel-latest-chapter" data-title="${
+          data.title
+        }" data-chapter="${
+    data.latest_chapter
+  }" data-link="${chapter_link}" onclick="getChapterContent(this)">
             ${data.latest_chapter}
         </a>
         <span class="novel-update-time">${data.update_time}</span>
@@ -152,4 +166,18 @@ function createHomeCompletedNovelElements(data) {
     `;
 
   completed_novels_home_container.appendChild(div);
+}
+function createLabelTitle(hot, full, bNew) {
+  let elem = ``;
+  if (hot) {
+    elem += `<span class="label_title label_hot">hot</span>`;
+  }
+  if (full) {
+    elem += `<span class="label_title label_full">full</span>`;
+  }
+  if (bNew) {
+    elem += `<span class="label_title label_new">new</span>`;
+  }
+
+  return elem;
 }

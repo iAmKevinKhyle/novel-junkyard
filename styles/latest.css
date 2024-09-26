@@ -38,9 +38,10 @@
 .row > i {
   padding: 0;
 }
-.row > a.novel-title {
+.row > .link_holder {
   flex: 4.5;
   font-size: 0.9rem;
+  position: relative;
 }
 .row > span.novel-genres {
   flex: 2;

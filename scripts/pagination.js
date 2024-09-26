@@ -300,6 +300,9 @@ function createNewPageContent(data) {
     img,
     latest_chapter,
     latest_chapter_title,
+    label_hot,
+    label_full,
+    label_new,
     count,
   } = data;
   const div = document.createElement("div");
@@ -316,7 +319,7 @@ function createNewPageContent(data) {
         onclick="getNovelInfo(this, true, false)"
       />
       <div class="wrapper">
-        <span>
+        <span style="position: relative; max-width: 450px;">
           <i class="fa-solid fa-book"></i>
           <a
             href="javascript:void(0)"
@@ -327,6 +330,9 @@ function createNewPageContent(data) {
           >
             ${title}
           </a>
+          <span class="label_container negative">
+            ${createLabelTitleV2(label_hot, label_full, label_new)}
+          </span>
         </span>
         <span><i class="fa-solid fa-pen-nib"></i>${author}</span>
       </div>
@@ -363,4 +369,19 @@ function hasCountData(count, title, latest_chapter_title, latest_chapter) {
           ${count}
       </span>`;
   }
+}
+
+function createLabelTitleV2(hot, full, bNew) {
+  let elem = ``;
+  if (hot) {
+    elem += `<span class="label_title label_hot">hot</span>`;
+  }
+  if (full) {
+    elem += `<span class="label_title label_full">full</span>`;
+  }
+  if (bNew) {
+    elem += `<span class="label_title label_new">new</span>`;
+  }
+
+  return elem;
 }
