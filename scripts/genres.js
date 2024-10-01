@@ -237,9 +237,10 @@ window.addEventListener("load", () => {
       }
     });
 
-    select_genre_container.addEventListener("change", (e) =>
-      handleSelectChanged(e)
-    );
+    select_genre_container.addEventListener("change", (e) => {
+      handleSelectChanged(e);
+      resetPage();
+    });
   }
 
   all_genres.forEach((el) => {
@@ -259,8 +260,6 @@ window.addEventListener("load", () => {
 function handleSelectChanged(e) {
   const genre = e.target.value.toLowerCase().replaceAll(" ", "_");
 
-  // ! this line?
-  sessionStorage.setItem("page", 1);
   sessionStorage.setItem("sort-genre", JSON.stringify({ genre }));
   location.reload();
 }
@@ -297,7 +296,7 @@ function createElementForGenre() {
 function handleGenreClick(e) {
   const el = e.currentTarget || e;
 
-  sessionStorage.setItem("page", 1);
+  resetPage();
   sessionStorage.setItem(
     "sort-genre",
     JSON.stringify({ genre: el.title.replaceAll(" ", "_") })

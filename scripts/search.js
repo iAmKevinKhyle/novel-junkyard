@@ -38,15 +38,16 @@ search_novel.addEventListener("focus", () => {
       }
 
       sessionStorage.setItem("search-keyword", value);
-      sessionStorage.setItem("page", 1);
+      resetPage();
 
       const indexPage = location.pathname.includes("/index.html");
       const errorPage = location.pathname.includes("/error.html");
+      const blankPage = location.pathname[location.pathname.length - 1] === "/";
 
-      if (indexPage || errorPage) {
+      if (indexPage || errorPage || blankPage) {
         location.href = "pages/search.html";
       } else {
-        location.href = "search.html";
+        location.href = "./search.html";
       }
     }
   });

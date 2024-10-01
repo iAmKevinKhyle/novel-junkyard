@@ -42,7 +42,7 @@
     <script src="scripts/error.js" defer></script>
     <script defer>
       sessionStorage.setItem("sort-genre", JSON.stringify({ genre: "all" }));
-      sessionStorage.setItem("page", 1);
+      localStorage.setItem("current_page", 1);
       document.title = "Novel Junkyard";
 
       function clear() {

@@ -25,7 +25,7 @@ let current_page = page_number[0].value;
 let number_of_pages;
 let content_fetched;
 let current_genre;
-let marked_page = sessionStorage.getItem("page") || current_page;
+let marked_page = localStorage.getItem("current_page") || current_page;
 let search_keyword;
 
 window.addEventListener("load", () => {
@@ -60,8 +60,6 @@ window.addEventListener("load", () => {
     search_keyword = sessionStorage.getItem("search-keyword");
     getSearchResults(search_keyword, marked_page);
   }
-
-  checkButtonClickability();
 });
 
 first_page.forEach((el) =>
@@ -128,7 +126,7 @@ function handlePaginationCount(com, value) {
     getSearchResults(search_keyword, current_page);
   }
 
-  sessionStorage.setItem("page", current_page);
+  localStorage.setItem("current_page", current_page);
   page_number.forEach((el) => (el.value = current_page));
 
   checkButtonClickability();
@@ -227,6 +225,10 @@ function getAllNovelsByClass(mark, page) {
 }
 
 function getSearchResults(key, page) {
+  if (key === null) {
+    location.href = "../index.html";
+  }
+
   key = key.replaceAll(" ", "+");
   const url = `https://novel-scraper-290c.onrender.com/api/novel/search/${key}/${page}`;
 
@@ -339,6 +341,9 @@ function createNewPageContent(data) {
     </div>
     ${hasCountData(count, title, latest_chapter_title, latest_chapter)}
   `;
+
+  // ? ???
+  checkButtonClickability();
 
   if (location.pathname.includes("/pages/genre.html")) {
     genre_content_container.appendChild(div);

@@ -30,7 +30,7 @@ window.addEventListener("resize", () => {
 });
 
 function resetPage() {
-  sessionStorage.setItem("page", 1);
+  localStorage.setItem("current_page", 1);
 }
 
 // ? DarkMode???
