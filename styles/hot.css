@@ -179,7 +179,7 @@
     display: block;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 375px) {
   .container {
     grid-template-areas:
       "a b c"

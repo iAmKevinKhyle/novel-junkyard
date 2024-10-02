@@ -239,6 +239,14 @@
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
+.rating_container > span {
+  text-align: center;
+}
+.rating_container > span > i {
+  color: gold !important;
+  font-size: 1.25rem;
+  padding-inline: 0.15rem;
+}
 
 @media (max-width: 625px) {
   .cover-container > img {
