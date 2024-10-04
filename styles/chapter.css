@@ -21,6 +21,9 @@
 .chapter_content_container > *:not(:last-of-type) {
   margin-bottom: 0.75rem;
 }
+.chapter_content_container > span.others * {
+  margin-bottom: 0.75rem;
+}
 .chapter_content_container ul {
   list-style-type: disc;
   list-style-position: inside;
