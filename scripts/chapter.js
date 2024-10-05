@@ -7,14 +7,15 @@ const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
 
 let fetching = true;
+let protocol;
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   if (location.pathname.includes("/pages/chapter.html")) {
     // ? show loader
     displayLoader();
 
     // ? prevent server spin down
-    preventServerSpinDown();
+    protocol = await preventServerSpinDown();
 
     const url = "https://novel-scraper-290c.onrender.com/api/novel/content";
     const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";
@@ -134,6 +135,11 @@ window.addEventListener("beforeunload", () => {
 window.addEventListener("visibilitychange", () => {
   if (location.pathname.includes("/pages/chapter.html")) {
     saveScrollY();
+
+    if (document.visibilityState === "visible") {
+      // ? prevent server spin down
+      preventServerSpinDown();
+    }
   }
 });
 
@@ -269,11 +275,15 @@ function scrollToSavePositon() {
   window.scroll(0, pos);
 }
 
-function preventServerSpinDown() {
+async function preventServerSpinDown() {
+  if (protocol) {
+    clearTimeout(protocol);
+  }
+
   const time = Math.floor(Math.random() * (550000 - 500000) + 500000);
 
   if (location.pathname.includes("/pages/chapter.html")) {
-    fetch("https://novel-scraper-290c.onrender.com/")
+    await fetch("https://novel-scraper-290c.onrender.com/")
       .then((response) => response.json())
       .then((data) => {
         console.log("SDP (Spin Down Prevention) Protocol Activated!");
@@ -281,7 +291,7 @@ function preventServerSpinDown() {
       .catch((err) => console.log(err));
   }
 
-  setTimeout(() => {
+  protocol = setTimeout(() => {
     preventServerSpinDown();
   }, time);
 }
