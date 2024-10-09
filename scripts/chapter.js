@@ -5,6 +5,7 @@ const novel_title = document.querySelector(".novel_title");
 const novel_chapter = document.querySelector(".novel_chapter");
 const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
+const loading_text = document.querySelector(".loading_text");
 
 let fetching = true;
 let protocol;
@@ -44,6 +45,7 @@ window.addEventListener("load", async () => {
       })
       .then((data) => {
         redirectIfHasError(fetchStatus, data);
+        loading_text.style.display = "none";
 
         data.map((item, i) => {
           if (item.p !== undefined) {

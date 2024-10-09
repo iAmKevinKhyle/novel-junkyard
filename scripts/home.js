@@ -26,6 +26,7 @@ window.addEventListener("load", () => {
     .then((json) => {
       redirectIfHasError(fetchStatus, json);
 
+      hot_novels_home_container.innerHTML = "";
       json.forEach((item) => {
         createHomeHotNovelElements(item);
       });
@@ -43,6 +44,7 @@ window.addEventListener("load", () => {
     .then((json) => {
       redirectIfHasError(fetchStatus, json);
 
+      latest_novels_home_container.innerHTML = "";
       json.forEach((item) => {
         createHomeLatestNovelElements(item);
       });
@@ -58,6 +60,7 @@ window.addEventListener("load", () => {
     .then((json) => {
       redirectIfHasError(fetchStatus, json);
 
+      completed_novels_home_container.innerHTML = "";
       json.forEach((item) => {
         createHomeCompletedNovelElements(item);
       });

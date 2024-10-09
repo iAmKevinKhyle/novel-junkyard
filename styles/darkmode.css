@@ -58,4 +58,24 @@ button {
   border-top: 1px dotted var(--main-txt-color-light);
   border-bottom: 1px dotted var(--main-txt-color-light);
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--main-bg-color-gray);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main-txt-color-dark);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-bg-color-dark);
+}
 /* dark mode */

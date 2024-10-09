@@ -250,6 +250,7 @@ function getSearchResults(key, page) {
 
       if (result.length === 1) {
         disableAllButton();
+        loading_text.style.display = "none";
         error_message.style.display = "block";
 
         removeLoader();
