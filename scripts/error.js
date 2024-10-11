@@ -55,7 +55,10 @@ function redirectIfHasError(fetchStatus, data) {
     const path = location.pathname;
 
     saveErrorStats(msg, name, path);
-    if (location.pathname.includes("/index.html")) {
+    if (
+      location.pathname.includes("/index.html") ||
+      location.pathname[location.pathname.length - 1] === "/"
+    ) {
       location.href = "error.html";
     } else {
       location.href = "../error.html";

@@ -85,7 +85,8 @@ function setScreenTheme() {
 profileBTN.addEventListener("click", () => {
   if (
     location.pathname.includes("index.html") ||
-    location.pathname.includes("error.html")
+    location.pathname.includes("error.html") ||
+    location.pathname[location.pathname.length - 1] === "/"
   ) {
     location.href = "pages/profile.html";
   } else {

@@ -302,7 +302,10 @@ function handleGenreClick(e) {
     JSON.stringify({ genre: el.title.replaceAll(" ", "_") })
   );
 
-  if (location.pathname.includes("/index.html")) {
+  if (
+    location.pathname.includes("/index.html") ||
+    location.pathname[location.pathname.length - 1] === "/"
+  ) {
     location.href = "pages/genre.html";
   } else {
     location.href = "genre.html";
