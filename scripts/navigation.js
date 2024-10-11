@@ -60,7 +60,11 @@ function setScreenTheme() {
   const link = document.createElement("link");
   link.rel = "stylesheet";
 
-  if (path.includes("/index.html") || path.includes("/error.html")) {
+  if (
+    path.includes("/index.html") ||
+    path.includes("/error.html") ||
+    path[path.length - 1] === "/"
+  ) {
     link.href = "styles/darkmode.css";
   } else {
     link.href = "../styles/darkmode.css";
