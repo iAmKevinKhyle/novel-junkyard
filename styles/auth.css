@@ -1,0 +1,21 @@
+.auth {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google_auth {
+  color: var(--main-txt-color-light);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+.google_auth:hover {
+  transform: scale(1.05);
+}
+.google_auth:active {
+  transform: scale(1);
+}

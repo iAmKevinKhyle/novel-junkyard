@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Novel Junkyard Read Light Novel, Web Novel, Korean Novel and Chinese Novel online for free."
+    />
+    <meta
+      name="keywords"
+      content="junkyard,novel junkyard, Light Novel, Web Novel, Korean Novel, Chinese Novel, Novel, Novel Junkyard, Novels, Kevin Khyle Gepulle"
+    />
+    <meta name="author" content="Kevin Khyle Gepulle" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading...</title>
+
+    <!-- ICON -->
+    <link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon" />
+    <!-- STYLES LINK -->
+    <link rel="stylesheet" href="../styles/default.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/error.css" />
+    <link rel="stylesheet" href="../styles/navigation.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- SCRIPT LINKS -->
+    <script src="../scripts/search.js" defer></script>
+    <script src="../scripts/navigation.js" defer></script>
+    <script src="../scripts/error.js" defer></script>
+    <script src="../scripts/toggle.js" defer></script>
+    <script src="../scripts/profile.js" defer></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="left-side-container">
+        <h3 id="title" class="poppins-semibold">
+          <img
+            id="Logo"
+            src="../images/logo.jpg"
+            alt="Novel Junkyard Logo"
+            height="50"
+            width="50"
+          />
+          <a href="../index.html">Novel Junkyard</a>
+        </h3>
+
+        <button class="none" id="menu_button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="right-side-container">
+        <div class="fixed-height-container">
+          <nav id="navigation">
+            <ul id="list">
+              <li>
+                <a onclick="resetPage()" href="latest.html"> novels </a>
+              </li>
+              <li class="this">
+                <a
+                  onclick="resetPage()"
+                  class="navigation_to_genre"
+                  href="genre.html"
+                >
+                  genres
+                </a>
+              </li>
+              <li class="action_holder">
+                <a class="navigation_to_darkmode" href="javascript:void(0)">
+                  <span class="moon darkmode_btn none">
+                    <i class="fa-solid fa-moon moon"></i>
+                  </span>
+                  <span class="sun darkmode_btn">
+                    <i class="fa-solid fa-sun sun"></i>
+                  </span>
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="navigation_to_profile"
+                  aria-disabled="true"
+                >
+                  <span class="user user_profile_btn">
+                    <i class="fa-solid fa-user user"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <input id="search_novel" type="search" placeholder="Search Novel" />
+        </div>
+      </div>
+    </header>
+    <div class="breadcrumbs">
+      <ul class="list">
+        <li><a href="../index.html">home</a> ></li>
+        <li><a href="#">Loading...</a> ></li>
+      </ul>
+    </div>
+    <main id="main-content">
+      <section class="main_containers pb-none" id="profile_section">
+        <div class="title-container mb-none">
+          <h4>Profile <i class="fa-solid fa-user"></i></h4>
+          <a href="pages/hot.html" class="more_content_button">
+            logout <i class="fa-solid fa-door-open"></i>
+          </a>
+        </div>
+        <div class="profile_info">
+          <h1 class="background_text">Novel Junkyard</h1>
+          <div class="blur"></div>
+          <img
+            src="../images/logo.jpg"
+            alt="Novel Junkyard"
+            height="200"
+            width="200"
+            class="profile_img"
+          />
+          <div class="profile_info_details">
+            <p class="user_name">
+              <i class="fa-solid fa-user"></i> Novel Junkyard
+            </p>
+            <p class="user_gmail">
+              <i class="fa-solid fa-box"></i> novel_junkyard@read.com
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="main_containers">
+        <div class="title-container">
+          <a href="#bookmark" class="bookmark_content_button">
+            <i class="fa-solid fa-caret-left"></i>
+            <span class="hide_on_425">Bookmark</span>
+            <i class="fa-solid fa-book"></i>
+          </a>
+          <div class="toggle_title_container">
+            <h4 class="bookmark_title hidden">
+              Bookmark <i class="fa-solid fa-book-open"></i>
+            </h4>
+            <h4 class="reading_title hidden">
+              Reading <i class="fa-solid fa-glasses"></i>
+            </h4>
+          </div>
+          <a href="#reading" class="reading_content_button">
+            <i class="fa-solid fa-glasses"></i>
+            <span class="hide_on_425">Reading</span>
+            <i class="fa-solid fa-caret-right"></i>
+          </a>
+        </div>
+        <div class="toggle_content_container">
+          <div class="reading_content hidden toggle_content_wrapper">
+            <div class="empty_card_alert">
+              <p><i class="fa-regular fa-hourglass"></i> No reading Content</p>
+            </div>
+          </div>
+          <div class="bookmark_content hidden toggle_content_wrapper">
+            <div class="empty_card_alert">
+              <p><i class="fa-regular fa-hourglass"></i> No Bookmark Content</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <p>
+        <b>Novel Junkyard</b> Read light novel, web novel, korean novel and
+        chinese novel online for free. You can find hundreds of english
+        translated light novel, web novel, korean novel and chinese novel which
+        are daily updated! Read novels online, read light novel online, read
+        online free, free light novel online.
+      </p>
+    </footer>
+    <script>
+      const verified = JSON.parse(localStorage.getItem("verified")) || false;
+
+      // if (!verified) {
+      //   location.href = "./auth.html";
+      // }
+    </script>
+  </body>
+</html>

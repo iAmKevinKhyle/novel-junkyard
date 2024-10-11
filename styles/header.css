@@ -72,7 +72,7 @@ header h3 > a {
   transform: scale(0.9);
 }
 
-@media (max-width: 845px) {
+@media (max-width: 930px) {
   header#header {
     flex-direction: column;
     align-items: start;
@@ -82,8 +82,14 @@ header h3 > a {
   .breadcrumbs > ul {
     padding-inline: 1rem;
   }
+  .right-side-container {
+    width: 100%;
+  }
+  #search_novel {
+    flex: 1;
+  }
 }
-@media (max-width: 624px) {
+@media (max-width: 635px) {
   header#header {
     align-items: start;
     gap: 0;
@@ -100,6 +106,9 @@ header h3 > a {
   nav#navigation > ul {
     flex-direction: column;
     align-items: start;
+  }
+  nav#navigation {
+    width: 100%;
   }
 
   .none {

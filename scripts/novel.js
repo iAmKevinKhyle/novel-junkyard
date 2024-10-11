@@ -47,6 +47,21 @@ window.addEventListener("load", () => {
       clearReadingHistory();
     });
 
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
     add_to_favorite.addEventListener("click", () => {
       if (add_to_favorite.classList.contains("bookmarked")) {
         add_to_favorite.classList.remove("bookmarked");
@@ -56,8 +71,10 @@ window.addEventListener("load", () => {
         });
       } else {
         add_to_favorite.classList.add("bookmarked");
+        const cover = novel_cover_img.src;
 
         bookmark.push({
+          cover,
           title,
           link,
           chapter_title,
@@ -67,6 +84,22 @@ window.addEventListener("load", () => {
 
       localStorage.setItem("bookmark", JSON.stringify(bookmark));
     });
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
+
+    // ! handle bookmark add and remove here
 
     bookmark?.map((item) => {
       const item_title = item.title;

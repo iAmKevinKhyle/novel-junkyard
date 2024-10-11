@@ -45,8 +45,22 @@ input[type="number"] {
   outline: none;
 }
 
+.hidden,
 .none {
   display: none;
+}
+
+.f_end {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.mb-none {
+  margin-bottom: 0 !important;
+}
+.pb-none {
+  padding-bottom: 0 !important;
 }
 
 .main_containers {
@@ -239,6 +253,21 @@ input[type="number"] {
   border: 1px solid skyblue;
 }
 
+/* ? Navigation darkmode and profile button */
+.navigation_to_darkmode > span.moon,
+.navigation_to_darkmode > span.sun,
+.navigation_to_profile > span.user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+@media (max-width: 425px) {
+  .hide_on_425 {
+    display: none;
+  }
+}
 @media (max-width: 500px) {
   input[type="number"] {
     width: 20px;

@@ -78,4 +78,17 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--main-bg-color-dark);
 }
+
+.background_text {
+  z-index: 1;
+  color: transparent !important;
+}
+
+.profile_info {
+  background-color: transparent !important;
+  border-color: var(--main-txt-color-light);
+}
+.profile_img {
+  border-color: var(--main-txt-color-light);
+}
 /* dark mode */

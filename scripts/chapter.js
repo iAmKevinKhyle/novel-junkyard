@@ -157,6 +157,22 @@ window.addEventListener("blur", () => {
 //   }
 // });
 
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
 function getChapterContent(el, pages = false) {
   if (el.getAttribute("disabled") === "true") {
     return;
@@ -192,6 +208,22 @@ function getChapterContent(el, pages = false) {
     location.href = "pages/chapter.html";
   }
 }
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
+
+// ! handle reading add and remove here
 
 function saveReadingHistory(title, title_link, chapter, link) {
   const limit = 5;

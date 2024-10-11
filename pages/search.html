@@ -63,20 +63,25 @@
               <li>
                 <a onclick="resetPage()" href="latest.html">novels</a>
               </li>
-              <li>
+              <li class="this">
                 <a class="navigation_to_genre" href="genre.html">genres</a>
               </li>
-              <li>
+              <li class="action_holder">
                 <a
-                  onclick="resetPage()"
                   class="navigation_to_darkmode"
                   href="javascript:void(0)"
+                  onclick="resetPage()"
                 >
-                  <span class="moon darkmode_btn">
+                  <span class="moon darkmode_btn none">
                     <i class="fa-solid fa-moon moon"></i>
                   </span>
                   <span class="sun darkmode_btn">
                     <i class="fa-solid fa-sun sun"></i>
+                  </span>
+                </a>
+                <a href="javascript:void(0)" class="navigation_to_profile">
+                  <span class="user user_profile_btn">
+                    <i class="fa-solid fa-user user"></i>
                   </span>
                 </a>
               </li>

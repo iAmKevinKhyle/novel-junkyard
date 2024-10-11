@@ -36,7 +36,7 @@ nav#navigation > ul > li a:hover {
 nav#navigation > ul > li {
   position: relative;
 }
-nav#navigation > ul > li:not(:last-of-type)::after {
+nav#navigation > ul > li:not(:last-of-type, .this)::after {
   content: "";
   position: absolute;
   top: 0;
@@ -56,8 +56,43 @@ nav#navigation > ul > li:not(:last-of-type)::after {
   content: "Dark";
 }
 
-@media (max-width: 624px) {
+.navigation_to_profile > span.user::after {
+  content: "profile";
+}
+
+/* ? user profile button css */
+.action_holder {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 30rem;
+  color: var(--main-txt-color-light);
+  border: 2px solid var(--main-txt-color-dark);
+  font-size: 0.85rem;
+  margin-left: 0.75rem;
+}
+.action_holder > a {
+  flex: 1;
+}
+
+.action_holder:hover {
+  border-color: var(--main-txt-color-light);
+  transition: border-color 300ms ease;
+}
+
+@media (max-width: 635px) {
   nav#navigation > ul > li::after {
     display: none;
+  }
+
+  .action_holder {
+    width: 100%;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 930px) {
+  .action_holder {
+    margin-left: 1rem;
   }
 }
