@@ -65,7 +65,9 @@ window.addEventListener("load", async () => {
             span.classList.add("others");
             span.innerHTML = item.other;
 
-            chapter_content_container.appendChild(span);
+            if (!item.other.includes("</iframe>")) {
+              chapter_content_container.appendChild(span);
+            }
           }
         });
       })
