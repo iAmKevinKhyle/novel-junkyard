@@ -51,13 +51,16 @@ window.addEventListener("load", async () => {
           if (item.p !== undefined) {
             const p = document.createElement("p");
             p.classList.add("sentence");
-            p.innerHTML = item.p;
+            p.innerHTML = item.p.replace(/NovelFull.Net/gi, "Novel Junkyard.");
 
             chapter_content_container.appendChild(p);
           } else if (item.ul !== undefined) {
             const ul = document.createElement("ul");
             ul.classList.add("content_list");
-            ul.innerHTML = item.ul;
+            ul.innerHTML = item.ul.replace(
+              /NovelFull.Net/gi,
+              "Novel Junkyard."
+            );
 
             chapter_content_container.appendChild(ul);
           } else {
@@ -65,7 +68,8 @@ window.addEventListener("load", async () => {
             span.classList.add("others");
             span.innerHTML = item.other
               .replaceAll("<u>", "<span>")
-              .replaceAll("</u>", "</span>");
+              .replaceAll("</u>", "</span>")
+              .replace(/NovelFull.Net/gi, "Novel Junkyard.");
 
             chapter_content_container.appendChild(span);
           }
