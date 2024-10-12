@@ -63,12 +63,18 @@ window.addEventListener("load", async () => {
           } else {
             const span = document.createElement("span");
             span.classList.add("others");
-            span.innerHTML = item.other;
+            span.innerHTML = item.other
+              .replaceAll("<u>", "<span>")
+              .replaceAll("</u>", "</span>");
 
-            if (!item.other.includes("</iframe>")) {
-              chapter_content_container.appendChild(span);
-            }
+            chapter_content_container.appendChild(span);
           }
+        });
+
+        const iframes = chapter_content_container.querySelectorAll("iframe");
+
+        iframes.forEach((frame) => {
+          frame.remove();
         });
       })
       .catch((err) => console.log(err));
