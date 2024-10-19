@@ -4,7 +4,7 @@ const genre_nav_button = document.querySelector(".navigation_to_genre");
 const darkmodeBTN = document.querySelector(".navigation_to_darkmode");
 const profileBTN = document.querySelector(".navigation_to_profile");
 
-const host = "http://192.168.18.53:8080/api/user/";
+const host = "https://novel-scraper-290c.onrender.com/api/user/";
 
 genre_nav_button.addEventListener("click", () => {
   sessionStorage.setItem("sort-genre", JSON.stringify({ genre: "all" }));
