@@ -26,10 +26,7 @@ const novel_start_read = document.getElementById("novel_start_read");
 const novel_desc = document.getElementById("novel_desc");
 const add_to_favorite = document.getElementById("add_to_favorite");
 
-window.addEventListener("load", () => {
-  // ?show loader
-  displayLoader();
-
+window.addEventListener("load", async () => {
   const novel_info = JSON.parse(localStorage.getItem("novel_info"));
 
   const url = "https://novel-scraper-290c.onrender.com/api/novel/description";
@@ -39,73 +36,101 @@ window.addEventListener("load", () => {
   const chapter_link = continue_reading_a?.dataset.link;
 
   if (location.pathname.includes("/pages/novel.html")) {
+    // ?show loader
+    displayLoader();
+    displayToast();
+
     document.title = title;
-    const reading = JSON.parse(localStorage.getItem("reading"));
-    let bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
+    let reading;
+    let bookmark;
+
+    const session_id = getCookie("session_id") || "";
+
+    if (session_id !== "") {
+      await fetch(host + session_id)
+        .then((res) => res.json())
+        .then((data) => {
+          bookmark = data.bookmark;
+          reading = data.reading;
+        })
+        .catch((err) => console.log(err));
+    }
 
     clear_reading_history.addEventListener("click", () => {
-      clearReadingHistory();
+      const reading_id = reading.filter((item) => item.title === title)[0].$id;
+
+      clearReadingHistory(reading_id);
     });
 
-    // ! handle bookmark add and remove here
+    add_to_favorite.addEventListener("click", async (e) => {
+      if (session_id === "") {
+        setToast("Login First to Bookmark a Novel!");
+        displayToast();
+        return;
+      }
 
-    // ! handle bookmark add and remove here
+      const id = e.currentTarget.dataset.id || "none";
 
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-    add_to_favorite.addEventListener("click", () => {
       if (add_to_favorite.classList.contains("bookmarked")) {
         add_to_favorite.classList.remove("bookmarked");
 
-        bookmark = bookmark.filter((item) => {
-          return item.title !== title;
-        });
+        await fetch(host + "bookmark/delete", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+            Connection: "keep-alive",
+          },
+          body: JSON.stringify({ bookmark_id: id }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // ? display toast
+            setToast(data.text);
+            displayToast();
+          })
+          .catch((err) => console.log(err));
       } else {
         add_to_favorite.classList.add("bookmarked");
         const cover = novel_cover_img.src;
 
-        bookmark.push({
+        bookmark = {
           cover,
           title,
           link,
-          chapter_title,
-          chapter_link,
-        });
+        };
+
+        await fetch(host + "bookmark", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+            Connection: "keep-alive",
+          },
+          body: JSON.stringify({
+            user_id: getCookie("session_id"),
+            novel_title: title,
+            data: bookmark,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            add_to_favorite.dataset.id = data.id;
+
+            // ? display toast
+            setToast(data.text);
+            displayToast();
+          })
+          .catch((err) => console.log(err));
       }
-
-      localStorage.setItem("bookmark", JSON.stringify(bookmark));
     });
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
-
-    // ! handle bookmark add and remove here
 
     bookmark?.map((item) => {
       const item_title = item.title;
 
       if (title === item_title) {
         add_to_favorite.classList.add("bookmarked");
+        add_to_favorite.dataset.id = item.$id;
       }
     });
 
@@ -119,8 +144,15 @@ window.addEventListener("load", () => {
         continue_reading_a.dataset.title = item_title;
         continue_reading_a.dataset.chapter = item_chapter;
         continue_reading_a.dataset.link = item_link;
+        let limit = 0;
 
         for (let i = item.history.length - 1; i >= 0; i--) {
+          limit++;
+
+          if (limit > 5) {
+            break;
+          }
+
           const el = item.history[i];
           const a = document.createElement("a");
           const span = document.createElement("span");
@@ -274,17 +306,82 @@ function getNovelInfo(e, pages = false, addEvent = true) {
   }
 }
 
-function clearReadingHistory() {
-  let text = "Are you sure?\nEither OK or Cancel.";
+function clearReadingHistory(reading_id) {
+  Confirm(
+    "Delete Reading History",
+    "Are you sure you want to Delete this History?",
+    "Delete",
+    "Cancel",
+    reading_id
+  );
+}
 
-  if (confirm(text) === true) {
-    let reading = JSON.parse(localStorage.getItem("reading"));
-    const title = JSON.parse(localStorage.getItem("novel_info")).title;
+function Confirm(title, msg, $true, $false, reading_id) {
+  const div = document.createElement("div");
+  div.classList.add("dialog-ovelay");
 
-    reading = reading.filter((el) => el.title !== title);
+  const content = `
+    <div class='dialog'>
+      <header>
+        <h3>${title}</h3>
+        <i class='fa fa-close'></i>
+      </header>
+      <div class='dialog-msg'>
+        <p>${msg} (${reading_id})</p>
+      </div>
+      <footer>
+        <div class='controls'>
+          <button class='button button-danger doAction'>${$true}</button>
+            <button class='button button-default cancelAction'>${$false}</button>
+        </div>
+      </footer>
+    </div>
+  `;
 
-    localStorage.setItem("reading", JSON.stringify(reading));
+  div.innerHTML = content;
+
+  document.body.prepend(div);
+
+  const doAction = document.querySelector(".doAction");
+  const cancelAction = document.querySelector(".cancelAction");
+
+  doAction.addEventListener("click", async (e) => {
+    const parent =
+      e.currentTarget.parentElement.parentElement.parentElement.parentElement;
+    parent.classList.add("fadeOut");
+
+    setTimeout(() => {
+      parent.remove();
+    }, 500);
+
+    // ? do delete history action here
+    await fetch(host + "reading/history/delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+        Connection: "keep-alive",
+      },
+      body: JSON.stringify({
+        reading_id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setToast(data.text);
+      })
+      .catch((err) => console.log(err));
 
     location.reload();
-  }
+  });
+
+  cancelAction.addEventListener("click", (e) => {
+    const parent =
+      e.currentTarget.parentElement.parentElement.parentElement.parentElement;
+    parent.classList.add("fadeOut");
+
+    setTimeout(() => {
+      parent.remove();
+    }, 500);
+  });
 }

@@ -4,6 +4,8 @@ const genre_nav_button = document.querySelector(".navigation_to_genre");
 const darkmodeBTN = document.querySelector(".navigation_to_darkmode");
 const profileBTN = document.querySelector(".navigation_to_profile");
 
+const host = "http://192.168.18.53:8080/api/user/";
+
 genre_nav_button.addEventListener("click", () => {
   sessionStorage.setItem("sort-genre", JSON.stringify({ genre: "all" }));
 });
@@ -97,3 +99,82 @@ profileBTN.addEventListener("click", () => {
     location.href = "profile.html";
   }
 });
+
+// ? cookie method get/set/delete
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function deleteCookie(cname) {
+  document.cookie = `${cname}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
+// ? toast method/functions set/delete/display
+appendToast();
+
+const toast = document.querySelector(".toast");
+const slide_loading = toast.querySelector(".slide_loading");
+const toast_text = toast.querySelector(".text");
+const close_toast = toast.querySelector(".close_toast");
+let setTimeoutFunc;
+
+close_toast.addEventListener("click", () => {
+  removeToast();
+});
+
+function displayToast() {
+  const hasToast = localStorage.getItem("toast") || false;
+
+  if (hasToast) {
+    toast_text.textContent = hasToast;
+    toast.classList.remove("hide");
+
+    if (setTimeoutFunc) {
+      clearTimeout(setTimeoutFunc);
+    }
+    setTimeoutFunc = setTimeout(() => {
+      toast.classList.add("hide");
+      toast_text.textContent = "";
+      localStorage.removeItem("toast");
+    }, 5000);
+  }
+}
+
+function setToast(text) {
+  localStorage.setItem("toast", text);
+}
+
+function removeToast() {
+  toast.classList.add("hide");
+}
+
+function appendToast() {
+  const div = document.createElement("div");
+  div.classList.add("toast", "hide");
+  div.innerHTML = `
+    <p class="text"></p>
+    <button class="close_toast"><i class="fa-solid fa-close"></i></button>
+    <span class="slide_loading"></span>
+  `;
+
+  document.body.append(div);
+}

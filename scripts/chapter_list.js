@@ -7,10 +7,12 @@ const ch_pages = document.querySelector(".ch_number_of_all_pages");
 const ch_page_input = document.querySelector("#ch_page_input");
 const ch_buttons = document.querySelectorAll(".ch_buttons");
 
-let page = getChapterListPageOnBookmark();
+let page;
 let number_pages = 1;
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
+  page = await getChapterListPageOnBookmark();
+
   if (location.pathname.includes("/pages/novel.html")) {
     showCHLoader();
     setTimeout(() => {
@@ -18,6 +20,7 @@ window.addEventListener("load", () => {
     }, 2000);
   }
 });
+
 ch_buttons.forEach((btn) =>
   btn.addEventListener("click", (e) => {
     if (e.currentTarget.id === "ch_first_page") {
@@ -48,6 +51,7 @@ ch_buttons.forEach((btn) =>
     checkCHButtonsClickability();
   })
 );
+
 ch_page_input.addEventListener("change", () => {
   page = ch_page_input.value;
 
@@ -169,33 +173,71 @@ function scrollToTopContainer() {
   window.scrollTo(0, top - 20);
 }
 
-function saveChapterListPageOnBookmark(num) {
+async function saveChapterListPageOnBookmark(num) {
+  const session_id = getCookie("session_id") || "";
+
+  if (session_id === "") {
+    return;
+  }
+
+  const data = [
+    {
+      page: num,
+    },
+    2,
+  ];
+
   const title = JSON.parse(localStorage.getItem("novel_info")).title;
-  let bookmark = JSON.parse(localStorage.getItem("bookmark"));
 
-  bookmark?.map((el) => {
-    if (title === el.title) {
-      el.page = num;
-    }
-  });
-
-  localStorage.setItem("bookmark", JSON.stringify(bookmark));
+  await fetch(host + "bookmark", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({
+      user_id: session_id,
+      novel_title: title,
+      data,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data);
+    })
+    .catch((err) => console.log(err));
 }
 
-function getChapterListPageOnBookmark() {
+async function getChapterListPageOnBookmark() {
   const title = JSON.parse(localStorage.getItem("novel_info")).title;
-  let bookmark = JSON.parse(localStorage.getItem("bookmark"));
   let num = 1;
 
-  bookmark?.map((el) => {
-    if (title === el.title) {
-      if (el.page === undefined) {
-        num = 1;
-      } else {
-        num = el.page;
-      }
-    }
-  });
+  const session_id = getCookie("session_id") || "";
+
+  if (session_id === "") {
+    return num;
+  }
+
+  const data = {
+    user_id: session_id,
+    novel_title: title,
+  };
+
+  await fetch(host + "bookmark/page", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      num = data.page;
+    })
+    .catch((err) => console.log(err));
 
   return num;
 }

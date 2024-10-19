@@ -109,16 +109,24 @@
   object-fit: cover;
   object-position: center;
 }
+
 .card_wrapper > .details {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   padding: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(2px);
   z-index: 10;
+
+  /* display: flex;
+  flex-direction: column; */
 }
+/* .card_wrapper > .details.half {
+  height: 50%;
+  justify-content: end;
+} */
 .card_wrapper > .details.full {
   top: 0;
   right: 0;
@@ -133,6 +141,10 @@
   line-clamp: 2;
   -webkit-box-orient: vertical;
   color: var(--main-txt-color-light);
+}
+.card_wrapper > .details.half > p {
+  min-height: 40px;
+  height: min-content;
 }
 .card_wrapper > .details > p.clickable {
   cursor: pointer;
@@ -160,7 +172,7 @@
 }
 .card_wrapper > .details > .continue_reading_btn {
   background-color: var(--main-bg-color-dark) !important;
-  color: var(--main-txt-color-light);
+  color: var(--main-txt-color-light) !important;
   padding: 0.5rem 1rem;
   display: block;
   width: 100%;
@@ -184,6 +196,9 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   color: var(--main-txt-color-light);
+}
+.reading_history_list {
+  min-height: 110px;
 }
 .reading_history_list li {
   margin: 0.2rem;
@@ -247,5 +262,11 @@
 @media (max-width: 500px) {
   .profile_info_details {
     flex-direction: column;
+  }
+}
+@media (any-pointer: coarse) {
+  .toggle_content_wrapper:hover > .card_wrapper:not(:hover) {
+    transform: scale(1);
+    opacity: 1;
   }
 }

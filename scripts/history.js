@@ -7,9 +7,22 @@ const bookmark_content_container = document.getElementById(
   "bookmark_content_container"
 );
 
-window.addEventListener("load", () => {
-  const reading = JSON.parse(localStorage.getItem("reading")) || [];
-  const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
+window.addEventListener("load", async () => {
+  const id = getCookie("session_id") || "";
+  let reading = [],
+    bookmark = [];
+
+  if (id != "") {
+    await fetch(host + id)
+      .then((res) => res.json())
+      .then((data) => {
+        bookmark = data.bookmark;
+        reading = data.reading;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   if (reading.length === 0) {
     reading_container.style.display = "none";

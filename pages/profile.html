@@ -12,7 +12,7 @@
     />
     <meta name="author" content="Kevin Khyle Gepulle" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loading...</title>
+    <title>Login</title>
 
     <!-- ICON -->
     <link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon" />
@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="../styles/navigation.css" />
     <link rel="stylesheet" href="../styles/footer.css" />
     <link rel="stylesheet" href="../styles/profile.css" />
+    <link rel="stylesheet" href="../styles/auth.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -32,7 +34,11 @@
     <script src="../scripts/navigation.js" defer></script>
     <script src="../scripts/error.js" defer></script>
     <script src="../scripts/toggle.js" defer></script>
+    <script src="../scripts/novel.js" defer></script>
+    <script src="../scripts/chapter.js" defer></script>
     <script src="../scripts/profile.js" defer></script>
+    <script src="../scripts/loader.js" defer></script>
+    <script src="../scripts/log_user.js" defer></script>
   </head>
   <body>
     <header id="header">
@@ -98,72 +104,197 @@
     <div class="breadcrumbs">
       <ul class="list">
         <li><a href="../index.html">home</a> ></li>
-        <li><a href="#">Loading...</a> ></li>
+        <li><a href="#" class="profile_name">Login</a> ></li>
       </ul>
     </div>
-    <main id="main-content">
-      <section class="main_containers pb-none" id="profile_section">
-        <div class="title-container mb-none">
-          <h4>Profile <i class="fa-solid fa-user"></i></h4>
-          <a href="javascript:void(0)" class="more_content_button">
-            logout <i class="fa-solid fa-door-open"></i>
-          </a>
-        </div>
-        <div class="profile_info">
-          <h1 class="background_text">Novel Junkyard</h1>
-          <div class="blur"></div>
-          <img
-            src="../images/logo.jpg"
-            alt="Novel Junkyard"
-            height="200"
-            width="200"
-            class="profile_img"
-          />
-          <div class="profile_info_details">
-            <p class="user_name">
-              <i class="fa-solid fa-user"></i> Novel Junkyard
-            </p>
-            <p class="user_gmail">
-              <i class="fa-solid fa-box"></i> novel_junkyard@read.com
-            </p>
+    <div id="profile_page" class="hide">
+      <main id="main-content">
+        <section class="main_containers pb-none" id="profile_section">
+          <div class="title-container mb-none">
+            <h4>Profile <i class="fa-solid fa-user"></i></h4>
+            <a
+              href="javascript:void(0)"
+              class="more_content_button logout_button"
+            >
+              logout <i class="fa-solid fa-door-open"></i>
+            </a>
           </div>
-        </div>
-      </section>
-      <section class="main_containers">
-        <div class="title-container">
-          <a href="#bookmark" class="bookmark_content_button">
-            <i class="fa-solid fa-caret-left"></i>
-            <span class="hide_on_425">Bookmark</span>
-            <i class="fa-solid fa-book"></i>
-          </a>
-          <div class="toggle_title_container">
-            <h4 class="bookmark_title hidden">
-              Bookmark <i class="fa-solid fa-book-open"></i>
-            </h4>
-            <h4 class="reading_title hidden">
-              Reading <i class="fa-solid fa-glasses"></i>
-            </h4>
-          </div>
-          <a href="#reading" class="reading_content_button">
-            <i class="fa-solid fa-glasses"></i>
-            <span class="hide_on_425">Reading</span>
-            <i class="fa-solid fa-caret-right"></i>
-          </a>
-        </div>
-        <div class="toggle_content_container">
-          <div class="reading_content hidden toggle_content_wrapper">
-            <div class="empty_card_alert">
-              <p><i class="fa-regular fa-hourglass"></i> No reading Content</p>
+          <div class="profile_info">
+            <h1 class="background_text">Novel Junkyard</h1>
+            <div class="blur"></div>
+            <img
+              src="../images/logo.jpg"
+              alt="Novel Junkyard"
+              height="200"
+              width="200"
+              class="profile_img"
+            />
+            <div class="profile_info_details">
+              <p class="user_name">
+                <i class="fa-solid fa-user"></i> Novel Junkyard
+              </p>
+              <p class="user_gmail">
+                <i class="fa-solid fa-box"></i> novel_junkyard@read.com
+              </p>
             </div>
           </div>
-          <div class="bookmark_content hidden toggle_content_wrapper">
-            <div class="empty_card_alert">
-              <p><i class="fa-regular fa-hourglass"></i> No Bookmark Content</p>
+        </section>
+        <section class="main_containers">
+          <div class="title-container">
+            <a href="#bookmark" class="bookmark_content_button">
+              <i class="fa-solid fa-caret-left"></i>
+              <span class="hide_on_425">Bookmark</span>
+              <i class="fa-solid fa-book"></i>
+            </a>
+            <div class="toggle_title_container">
+              <h4 class="bookmark_title hidden">
+                Bookmark <i class="fa-solid fa-book-open"></i>
+              </h4>
+              <h4 class="reading_title hidden">
+                Reading <i class="fa-solid fa-glasses"></i>
+              </h4>
+            </div>
+            <a href="#reading" class="reading_content_button">
+              <i class="fa-solid fa-glasses"></i>
+              <span class="hide_on_425">Reading</span>
+              <i class="fa-solid fa-caret-right"></i>
+            </a>
+          </div>
+          <div class="toggle_content_container">
+            <div class="reading_content hidden toggle_content_wrapper">
+              <div class="empty_card_alert">
+                <p>
+                  <i class="fa-regular fa-hourglass"></i> No reading Content
+                </p>
+              </div>
+            </div>
+            <div class="bookmark_content hidden toggle_content_wrapper">
+              <div class="empty_card_alert">
+                <p>
+                  <i class="fa-regular fa-hourglass"></i> No Bookmark Content
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
+    <div id="auth_page">
+      <main id="main-content">
+        <section class="main_containers auth signup_section hide">
+          <div class="auth_card">
+            <h2>Signup</h2>
+
+            <div class="login_register">
+              <a href="#login" class="switch_login">Login</a>
+              <a href="#signup" class="switch_register active">Signup</a>
+            </div>
+
+            <form class="form">
+              <span class="warning_name warning"></span>
+              <input
+                type="text"
+                placeholder="Username"
+                class="user_name_signup"
+                id="user_name_signup"
+              />
+
+              <span class="warning_password warning"></span>
+              <input
+                type="password"
+                placeholder="password"
+                class="user_password_signup"
+                id="user_password_signup"
+              />
+
+              <span class="warning_cpassword warning"></span>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                class="confirm_password_signup"
+                id="confirm_password_signup"
+              />
+              <div class="form_tools_wrapper">
+                <label for="show_pass_signup" class="stay_login">
+                  <input
+                    type="checkbox"
+                    id="show_pass_signup"
+                    class="show_pass_signup"
+                    id="show_pass_signup"
+                  />
+                  <span> Show Password</span>
+                </label>
+              </div>
+            </form>
+
+            <button type="submit" class="login_btn signup_button">
+              Signup
+            </button>
+          </div>
+        </section>
+        <section class="main_containers auth login_section">
+          <div class="auth_card">
+            <h2>Login</h2>
+
+            <div class="login_register">
+              <a href="#login" class="switch_login active">Login</a>
+              <a href="#signup" class="switch_register">Signup</a>
+            </div>
+
+            <form class="form">
+              <span class="warning_login warning"></span>
+              <input
+                type="text"
+                placeholder="Username"
+                class="user_name_login"
+                id="user_name_login"
+              />
+              <input
+                type="password"
+                placeholder="password"
+                class="user_password_login"
+                id="user_password_login"
+              />
+              <div class="form_tools_wrapper">
+                <label for="show_pass_login" class="stay_login">
+                  <input
+                    type="checkbox"
+                    id="show_pass_login"
+                    class="show_pass_login"
+                    id="show_pass_login"
+                  />
+                  <span> Show Password</span>
+                </label>
+                <label for="stay" class="stay_login">
+                  <input
+                    type="checkbox"
+                    id="stay"
+                    class="stay_login_checkbox"
+                    id="stay_login_checkbox"
+                    checked
+                  />
+                  <span> Stay Logged In?</span>
+                </label>
+              </div>
+            </form>
+
+            <button type="button" class="login_btn login_button">Login</button>
+            <div class="footer_card">
+              <p>Not a member?</p>
+              <a href="#" class="switch_register">Signup now</a>
+            </div>
+            <div class="divider_or">
+              <div class="line"></div>
+              <p>OR</p>
+              <div class="line"></div>
+            </div>
+            <button class="google_auth" disabled>
+              <i class="fa-brands fa-google"></i> Continue with Google
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
     <footer id="footer">
       <p>
         <b>Novel Junkyard</b> Read light novel, web novel, korean novel and
@@ -173,12 +304,5 @@
         online free, free light novel online.
       </p>
     </footer>
-    <script>
-      const verified = JSON.parse(localStorage.getItem("verified")) || false;
-
-      // if (!verified) {
-      //   location.href = "./auth.html";
-      // }
-    </script>
   </body>
 </html>

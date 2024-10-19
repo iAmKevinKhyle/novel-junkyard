@@ -9,6 +9,7 @@ const loading_text = document.querySelector(".loading_text");
 
 let fetching = true;
 let protocol;
+let clicked = false;
 
 window.addEventListener("load", async () => {
   if (location.pathname.includes("/pages/chapter.html")) {
@@ -175,20 +176,18 @@ window.addEventListener("blur", () => {
 
 // ! handle reading add and remove here
 
-// ! handle reading add and remove here
+async function getChapterContent(el, pages = false) {
+  if (clicked) {
+    return;
+  }
 
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-function getChapterContent(el, pages = false) {
   if (el.getAttribute("disabled") === "true") {
     return;
   }
+
+  clicked = true;
+
+  el.innerHTML = `<span class="mini-loader"></span>`;
 
   // ? set clicked to true so prevent scroll
   localStorage.setItem("clicked_this", true);
@@ -199,13 +198,24 @@ function getChapterContent(el, pages = false) {
   title_link = title_link.join("/") + ".html";
   const link = el.dataset.link;
   const chapter = el.dataset.chapter.replaceAll("\n", "");
+  const session_id = getCookie("session_id") || "";
+
+  const obj = [
+    {
+      chapter_title: chapter,
+      chapter_link: link,
+    },
+    2,
+  ];
 
   if (link === "N/A" || chapter === "N/A") {
+    setToast("No URL Found!");
+    displayToast();
     return;
   }
 
-  saveReadingHistory(title, title_link, chapter, link);
-  updateBookmarkChapter();
+  await saveReadingHistory(title, title_link, chapter, link);
+  await updateBookmarkChapter(session_id, title, obj);
   localStorage.setItem(
     "novel_info",
     JSON.stringify({
@@ -227,61 +237,10 @@ function getChapterContent(el, pages = false) {
 
 // ! handle reading add and remove here
 
-// ! handle reading add and remove here
+async function saveReadingHistory(title, title_link, chapter, link) {
+  const session_id = getCookie("session_id") || "";
+  let reading_id;
 
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-function saveReadingHistory(title, title_link, chapter, link) {
-  const limit = 5;
-  let isEqual = false;
-  const reading = localStorage.getItem("reading")
-    ? JSON.parse(localStorage.getItem("reading"))
-    : [];
-
-  reading.forEach((item) => {
-    if (item.title === title) {
-      if (item.chapter !== chapter) {
-        item.chapter = chapter;
-        item.link = link;
-      }
-      isEqual = true;
-
-      if (item.history.length >= limit) {
-        item.history = item.history.slice(1);
-      }
-
-      item.history = item.history.filter((el) => el.chapter !== chapter);
-      item.history.push({
-        title,
-        chapter,
-        link,
-      });
-    }
-  });
-
-  if (!isEqual) {
-    reading.push({
-      title,
-      title_link,
-      chapter,
-      link,
-      history: [
-        {
-          title,
-          chapter,
-          link,
-        },
-      ],
-    });
-  }
-
-  localStorage.setItem("reading", JSON.stringify(reading));
   localStorage.setItem(
     "chapter",
     JSON.stringify({
@@ -290,21 +249,88 @@ function saveReadingHistory(title, title_link, chapter, link) {
       link,
     })
   );
+
+  if (session_id === "") {
+    return;
+  }
+
+  const data = {
+    title,
+    title_link,
+    chapter,
+    link,
+  };
+
+  // ? Update/Create Reading Document
+  await fetch(host + "reading", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({
+      user_id: session_id,
+      novel_title: title,
+      data,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      reading_id = data.id;
+    })
+    .catch((err) => console.log(err));
+
+  const history = {
+    title,
+    chapter,
+    link,
+  };
+
+  // ? Update Chapter History
+  await fetch(host + "reading/history", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({
+      reading_id,
+      history,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
 }
 
-function updateBookmarkChapter() {
-  const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
-  const chapter = JSON.parse(localStorage.getItem("chapter")) || [];
-  if (bookmark.length === 0) return;
+// ?  UPDATE BOOKMARK LAST READ CHAPTER
+async function updateBookmarkChapter(user_id, novel_title, data) {
+  if (user_id === "") {
+    return;
+  }
 
-  bookmark.map((item) => {
-    if (item.title === chapter.title) {
-      item.chapter_title = chapter.chapter;
-      item.chapter_link = chapter.link;
-    }
-  });
-
-  localStorage.setItem("bookmark", JSON.stringify(bookmark));
+  await fetch(host + "bookmark", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({
+      user_id,
+      novel_title,
+      data,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
 }
 
 function saveScrollY() {

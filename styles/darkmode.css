@@ -6,9 +6,12 @@ header {
 header,
 footer,
 main,
-body,
-.breadcrumbs > ul {
+body {
   background-color: var(--main-bg-color-dark) !important;
+}
+
+.breadcrumbs > ul {
+  background-color: var(--main-bg-color-dark);
 }
 
 select,
@@ -24,7 +27,15 @@ li,
 i {
   color: var(--main-txt-color-light) !important;
 }
-
+a.active {
+  background-color: var(--main-bg-color-gray) !important;
+}
+button.login_btn {
+  background-color: var(--main-txt-color-dark) !important;
+}
+input::placeholder {
+  background-color: transparent !important;
+}
 .genre-container li > a {
   background-color: var(--main-bg-color-dark) !important;
 }
@@ -48,6 +59,7 @@ input {
 
 button {
   background-color: var(--main-txt-color-dark) !important;
+  color: var(--main-txt-color-light) !important;
 }
 
 .title-container {
@@ -57,6 +69,10 @@ button {
 .hlc_navigation_container > a.active {
   border-top: 1px dotted var(--main-txt-color-light);
   border-bottom: 1px dotted var(--main-txt-color-light);
+}
+
+.toast {
+  background-color: var(--main-bg-color-dark);
 }
 
 /* width */
