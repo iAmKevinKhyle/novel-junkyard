@@ -219,7 +219,7 @@ function getAllNovelsByClass(mark, page) {
 
         createNewPageContent(data);
       });
-      removeLoader();
+      // removeLoader();
     })
     .catch((err) => console.log(err));
 }
