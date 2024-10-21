@@ -31,6 +31,8 @@ function createBookmarkedNovelElements(data, container) {
   stopPropagationEvent.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
+      e.stopImmediatePropagation();
+      e.preventDefault();
 
       getChapterContent(e.currentTarget, true);
     });

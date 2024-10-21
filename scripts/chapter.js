@@ -170,13 +170,9 @@ window.addEventListener("blur", () => {
 //   }
 // });
 
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
 async function getChapterContent(el, pages = false) {
+  const prevButtonContent = el.innerHTML;
+
   if (clicked) {
     return;
   }
@@ -186,7 +182,6 @@ async function getChapterContent(el, pages = false) {
   }
 
   clicked = true;
-
   el.innerHTML = `<span class="mini-loader"></span>`;
 
   // ? set clicked to true so prevent scroll
@@ -209,6 +204,9 @@ async function getChapterContent(el, pages = false) {
   ];
 
   if (link === "N/A" || chapter === "N/A") {
+    clicked = false;
+    el.innerHTML = prevButtonContent;
+
     setToast("No URL Found!");
     displayToast();
     return;
@@ -230,12 +228,6 @@ async function getChapterContent(el, pages = false) {
     location.href = "pages/chapter.html";
   }
 }
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
-
-// ! handle reading add and remove here
 
 async function saveReadingHistory(title, title_link, chapter, link) {
   const session_id = getCookie("session_id") || "";
