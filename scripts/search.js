@@ -13,16 +13,6 @@ search_novel.addEventListener("focus", () => {
         location.reload();
         return;
       }
-      if (value == "clear/reading") {
-        localStorage.removeItem("reading");
-        location.reload();
-        return;
-      }
-      if (value == "clear/bookmark") {
-        localStorage.removeItem("bookmark");
-        location.reload();
-        return;
-      }
       if (value == "darkmode/true") {
         localStorage.setItem("darkmode", true);
         location.reload();

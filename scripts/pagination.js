@@ -31,6 +31,9 @@ let search_keyword;
 window.addEventListener("load", () => {
   current_page = marked_page;
 
+  // ? display loader
+  displayLoader();
+
   if (location.pathname.includes("/pages/genre.html")) {
     const genre = sessionStorage.getItem("sort-genre")
       ? JSON.parse(sessionStorage.getItem("sort-genre")).genre
@@ -219,7 +222,7 @@ function getAllNovelsByClass(mark, page) {
 
         createNewPageContent(data);
       });
-      // removeLoader();
+      removeLoader();
     })
     .catch((err) => console.log(err));
 }
