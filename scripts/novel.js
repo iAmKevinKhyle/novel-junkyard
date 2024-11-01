@@ -38,6 +38,7 @@ window.addEventListener("load", async () => {
 
     if (novel_info.title === undefined) {
       location.href = "../index.html";
+      return;
     }
 
     // ?show loader

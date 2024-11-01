@@ -23,6 +23,11 @@ window.addEventListener("load", async () => {
     const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";
     const chapter = getSearchParams();
     const title = chapter.title;
+    if (title === undefined) {
+      location.href = "../index.html";
+      return;
+    }
+
     const title_link = chapter.title_link;
     const chapter_name = chapter.chapter;
     const link = chapter.link;
