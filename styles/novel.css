@@ -83,15 +83,6 @@
 .action-button-container button:hover:not(:disabled) {
   transform: scale(1.05);
 }
-/* .action-button-container button:nth-of-type(1) {
-  background-color: rgb(224, 84, 84);
-}
-.action-button-container button:nth-of-type(2) {
-  background-color: rgb(73, 73, 202);
-} */
-.action-button-container button.bookmarked {
-  background-color: lime;
-}
 
 .chapter_list_container {
   margin-top: 1rem;
