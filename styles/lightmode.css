@@ -1,28 +1,23 @@
 :root {
-  --darker-color: #161414;
-  --primary-color: #212121;
-  --secondary-color: #4d4c4c;
+  --primary-color: #aaa9a9;
+  --secondary-color: #c2c2c2;
 
-  --text-color: #c2c2c2;
+  --text-color: #212121;
 }
-
-*:not(.global-loader) {
-  border-color: var(--text-color) !important;
-  color: var(--text-color) !important;
+* {
   outline: none;
 }
-
 body {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 header,
 footer {
-  background-color: var(--darker-color);
+  background-color: var(--primary-color);
 }
 .breadcrumbs {
-  background-color: var(--primary-color);
-  border-bottom: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--primary-color);
 }
 .toast {
   box-shadow: 0 0 1px 1px var(--secondary-color);
@@ -53,6 +48,9 @@ header h3 > img {
 .home_content_row > a:not(:last-of-type),
 .row > *:not(:first-child, :last-child) {
   border-right: 1px dotted var(--primary-color);
+}
+.row > i {
+  color: var(--text-color);
 }
 .genre-right-content-container > h4 {
   border-bottom: 1px solid var(--primary-color);
@@ -85,21 +83,36 @@ header h3 > img {
 }
 input {
   background-color: var(--secondary-color);
+  color: var(--text-color) !important;
   border: none;
+}
+button#novel_start_read,
+button#add_to_favorite {
+  color: var(--text-color);
 }
 button {
   background-color: var(--primary-color);
   border: none;
 }
-button.login_btn {
-  background-color: var(--secondary-color);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li,
+p {
+  color: var(--text-color);
 }
-div.login_register > a.active {
-  background-color: var(--secondary-color);
-  color: var(--text-color) !important;
+
+.reading_history_list > li > a {
+  color: var(--secondary-color);
 }
-.hlc_navigation_container > a.active {
-  background-color: var(--darker-color);
+
+div.card_wrapper > div.details > *:not(button) {
+  color: var(--secondary-color) !important;
 }
 
 ::-webkit-scrollbar {

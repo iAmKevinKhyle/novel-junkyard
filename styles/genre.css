@@ -10,16 +10,8 @@
 .genre-container a {
   padding: 0.5rem;
   text-transform: capitalize;
-  color: var(--main-txt-color-dark);
   font-size: 0.75rem;
-  background-color: var(--main-bg-color-gray);
   border-radius: 0.25rem;
-}
-
-.genre-container a.active,
-.genre-container a:hover {
-  background-color: var(--main-bg-color-dark);
-  color: var(--main-txt-color-light);
 }
 
 #select-genre {

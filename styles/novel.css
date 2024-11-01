@@ -25,7 +25,7 @@
   width: 100%;
   object-fit: cover;
   object-position: center;
-  box-shadow: 0 0 3px 0 var(--main-bg-color-dark);
+  /* box-shadow: 0 0 3px 0 var(--main-bg-color-dark); */
 }
 .novel-title-container {
   grid-area: title;
@@ -46,7 +46,7 @@
   margin-bottom: 1rem;
 }
 .info-container > ul > li > span > a {
-  color: var(--main-txt-color-dark);
+  /* color: var(--main-txt-color-dark); */
   text-transform: capitalize;
   font-style: italic;
   font-weight: 900;
@@ -69,7 +69,6 @@
   color: white;
   text-transform: capitalize;
   border-radius: 0.5rem;
-  border: 2px solid var(--main-bg-color-dark);
   cursor: pointer;
 }
 .action-button-container button:disabled {
@@ -84,15 +83,14 @@
 .action-button-container button:hover:not(:disabled) {
   transform: scale(1.05);
 }
-.action-button-container button:nth-of-type(1) {
+/* .action-button-container button:nth-of-type(1) {
   background-color: rgb(224, 84, 84);
 }
 .action-button-container button:nth-of-type(2) {
   background-color: rgb(73, 73, 202);
-}
+} */
 .action-button-container button.bookmarked {
   background-color: lime;
-  color: var(--main-bg-color-dark);
 }
 
 .chapter_list_container {
@@ -105,8 +103,6 @@
 .continue_reading_container,
 .latest_chapter_container {
   padding: 0.5rem;
-  border-bottom: 1px dotted var(--main-bg-color-dark);
-  border-top: 1px dotted var(--main-bg-color-dark);
   margin-bottom: 1rem;
 }
 
@@ -137,11 +133,9 @@
 .continue_reading_container > a,
 .latest_chapter_container > a {
   font-size: 0.95rem;
-  color: var(--main-txt-color-dark);
 }
 .chapter_list_container > div a {
   font-size: 0.8rem;
-  color: var(--main-txt-color-dark);
 }
 
 .chapter_list_container > div a:hover,
@@ -197,8 +191,6 @@
   gap: 0.25rem;
   padding: 0.45rem;
   border-radius: 0.25rem;
-  background-color: var(--main-txt-color-dark) !important;
-  color: var(--main-txt-color-light) !important;
   cursor: pointer;
 }
 .paginaton_cl_container > button:disabled {
@@ -227,7 +219,6 @@
 }
 .clear_reading_history:hover {
   background-color: red;
-  color: var(--main-txt-color-light);
 }
 
 .rating_container {

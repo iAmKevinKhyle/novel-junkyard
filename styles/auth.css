@@ -1,5 +1,4 @@
 .google_auth {
-  color: var(--main-txt-color-light);
   padding: 1rem;
   border-radius: 1rem;
   border: none;
@@ -14,14 +13,9 @@
   transform: scale(1);
 }
 
-button {
-  color: var(--main-bg-color-dark) !important;
-}
-
 .warning {
   background-color: rgb(221, 77, 77);
   padding: 0.5rem 1rem;
-  color: var(--main-txt-color-light);
   margin-bottom: 0.35rem;
   border-radius: 0.3rem;
   display: none;
@@ -56,7 +50,6 @@ button {
 .login_register {
   display: flex;
   width: 100%;
-  border: 1px solid var(--main-txt-color-light);
   border-radius: 15px;
   margin: 20px 0;
 }
@@ -70,7 +63,6 @@ button {
   text-align: center;
 }
 .login_register a.active {
-  background-color: var(--main-bg-color-gray);
   color: black !important;
 }
 
@@ -92,14 +84,12 @@ button {
 }
 .login_btn {
   font-size: 20px;
-  color: var(--main-txt-color-light);
   border-radius: 15px;
   border: none;
   width: 100%;
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 15px;
-  background: var(--main-txt-color-light);
   cursor: pointer;
   transition: transform 300ms ease;
 }
@@ -138,7 +128,6 @@ button {
 .line {
   height: 2px;
   width: 100%;
-  background-color: var(--main-txt-color-light);
 }
 .stay_login {
   display: flex;

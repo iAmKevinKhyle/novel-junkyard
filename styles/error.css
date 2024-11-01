@@ -5,8 +5,6 @@
   align-items: center;
   text-align: center;
   min-height: 60vh;
-  color: var(--main-txt-color-dark);
-  text-shadow: 0 0 3px var(--main-txt-color-light);
 }
 
 .error_message_container h1 {
@@ -28,13 +26,11 @@
 }
 
 .error_action_container a {
-  color: var(--main-txt-color-dark);
   text-transform: uppercase;
   font-size: 0.8rem;
 }
 .error_action_container a:hover {
   color: black;
-  text-shadow: 0 0 3px var(--main-txt-color-light);
   text-decoration: underline;
   font-weight: bold;
 }

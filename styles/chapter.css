@@ -17,6 +17,11 @@
   margin: 0 auto;
   line-height: 1.75;
 }
+
+.chapter_content_container > * {
+  overflow-wrap: break-word;
+}
+
 .chapter_content_container > span > *,
 .chapter_content_container > *:not(:last-of-type) {
   margin-bottom: 0.75rem;
@@ -61,12 +66,10 @@
 
 .chapter_nav > a[disabled="true"] {
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.25;
 }
 .chapter_nav > a {
   padding: 0.5rem 1rem;
-  background-color: var(--main-bg-color-dark);
-  color: var(--main-txt-color-light);
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 0.9rem;

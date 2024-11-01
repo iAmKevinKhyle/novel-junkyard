@@ -10,7 +10,6 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.15rem;
-  box-shadow: 0 0 3px 1px var(--main-bg-color-dark);
 
   cursor: pointer;
   transition: transform 300ms ease;

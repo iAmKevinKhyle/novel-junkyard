@@ -12,8 +12,6 @@ div.fixed-height-container {
 
 header {
   padding: 1rem 4rem;
-  background-color: var(--main-bg-color-dark);
-  box-shadow: 0 0 2px var(--main-txt-color-light);
 }
 
 header h3 {
@@ -22,10 +20,6 @@ header h3 {
 
 header h3 > img {
   border-radius: 50%;
-  border: 3px solid var(--main-txt-color-light);
-}
-header h3 > a {
-  color: var(--main-txt-color-light);
 }
 
 #search_novel {
@@ -33,7 +27,6 @@ header h3 > a {
   border-radius: 0.15rem;
   outline: none;
   border: none;
-  border: 1px solid var(--main-txt-color-light);
 }
 .breadcrumbs > ul {
   display: flex;
@@ -41,9 +34,6 @@ header h3 > a {
   gap: 0.5rem;
   padding: 0.1rem;
   padding-inline: 4rem;
-  background-color: var(--main-bg-color-gray);
-  color: var(--main-txt-color-dark);
-  border-bottom: 1px solid var(--main-txt-color-light);
 }
 
 .breadcrumbs > ul > li > a {
@@ -63,7 +53,6 @@ header h3 > a {
   text-align: center;
   border: none;
   cursor: pointer;
-  color: var(--main-txt-color-dark);
 }
 #menu_button:hover {
   transform: scale(1.1);

@@ -14,7 +14,7 @@ menu.addEventListener("click", () => {
   const height = document.querySelector(".fixed-height-container").offsetHeight;
 
   if (container.offsetHeight === 0) {
-    container.style.height = height + 16 + "px";
+    container.style.height = height + 18 + "px";
   } else {
     container.style.height = 0;
   }
@@ -59,17 +59,21 @@ function setScreenTheme() {
   const moon = darkmodeBTN.querySelector(".moon");
 
   const path = location.pathname;
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
+  const darkmode_link = document.createElement("link");
+  const lightmode_link = document.createElement("link");
+  darkmode_link.rel = "stylesheet";
+  lightmode_link.rel = "stylesheet";
 
   if (
     path.includes("/index.html") ||
     path.includes("/error.html") ||
     path[path.length - 1] === "/"
   ) {
-    link.href = "styles/darkmode.css";
+    darkmode_link.href = "styles/darkmode.css";
+    lightmode_link.href = "styles/lightmode.css";
   } else {
-    link.href = "../styles/darkmode.css";
+    darkmode_link.href = "../styles/darkmode.css";
+    lightmode_link.href = "../styles/lightmode.css";
   }
 
   if (!darkmode) {
@@ -80,10 +84,16 @@ function setScreenTheme() {
         document.head.removeChild(el);
       }
     });
+    document.head.appendChild(lightmode_link);
   } else {
     sun.classList.remove("none");
     moon.classList.add("none");
-    document.head.appendChild(link);
+    document.head.querySelectorAll("link").forEach((el) => {
+      if (el.href.includes("lightmode")) {
+        document.head.removeChild(el);
+      }
+    });
+    document.head.appendChild(darkmode_link);
   }
 }
 

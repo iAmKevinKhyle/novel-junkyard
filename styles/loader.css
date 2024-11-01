@@ -5,7 +5,7 @@
   --g: radial-gradient(
       farthest-side,
       #0000 calc(95% - 1px),
-      var(--main-txt-color-dark) calc(100% - 1px) 98%,
+      white calc(100% - 1px) 98%,
       #0000 101%
     )
     no-repeat;
@@ -63,7 +63,6 @@
   display: grid;
   border: 4px solid #0000;
   border-radius: 50%;
-  border-right-color: var(--main-txt-color-light);
   animation: l15 1s infinite linear;
 }
 .global-loader::before,

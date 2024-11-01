@@ -22,15 +22,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-wrap: nowrap;
-  color: var(--main-txt-color-dark);
   font-size: 0.85rem;
   padding: 0.35rem;
-}
-.home_content_row:not(:last-of-type) {
-  border-bottom: 1px dotted var(--main-txt-color-dark);
-}
-.home_content_row > a:not(:last-of-type) {
-  border-right: 1px dotted var(--main-txt-color-dark);
 }
 .home_content_row > a:hover {
   text-decoration: underline;

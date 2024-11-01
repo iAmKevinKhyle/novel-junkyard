@@ -18,14 +18,9 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px dotted var(--main-txt-color-dark);
 }
 .row:last-of-type {
   border-bottom: none;
-}
-
-.row > *:not(:first-child, :last-child) {
-  border-right: 1px dotted var(--main-txt-color-dark);
 }
 .row > * {
   text-wrap: nowrap;
@@ -60,15 +55,11 @@
   font-size: 0.85rem;
 }
 
-.row a {
-  color: var(--main-txt-color-dark);
-}
 .row a:hover {
   text-decoration: underline;
 }
 
 .genre-right-content-container > h4 {
-  border-bottom: 1px solid var(--main-txt-color-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -82,7 +73,6 @@
   padding: 0.15rem 0.25rem;
 }
 .genre-container > ul > li > a {
-  color: var(--main-txt-color-dark);
   text-transform: capitalize;
   font-size: 0.75rem;
 }

@@ -1,8 +1,6 @@
 footer#footer {
-  background-color: var(--main-bg-color-gray);
   padding: 1rem;
   margin-top: 2rem;
-  box-shadow: 0 0 2px var(--main-txt-color-light);
 }
 footer#footer > p {
   font-size: 0.85rem;

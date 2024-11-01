@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-:root {
-  --main-bg-color-dark: rgb(29, 29, 29);
-  --main-txt-color-light: rgb(204, 193, 193);
-
-  --main-bg-color-gray: rgb(168, 167, 167);
-  --main-txt-color-dark: rgb(77, 74, 74);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -32,6 +24,9 @@ body {
 a {
   text-decoration: none;
 }
+li:not(.action_holder) > a:hover:not([onclick="resetPage()"]) {
+  text-decoration: underline;
+}
 
 li {
   list-style: none;
@@ -41,7 +36,6 @@ input[type="number"] {
   padding: 0.15rem;
   text-align: center;
   border-radius: 0.25rem;
-  border: 1px solid var(--main-txt-color-dark);
   outline: none;
 }
 
@@ -76,7 +70,7 @@ input[type="number"] {
 }
 
 .main_containers .title-container {
-  border-bottom: 2px solid var(--main-bg-color-dark);
+  border-bottom: 2px solid;
   font-size: 1.25rem;
   margin-bottom: 1rem;
   display: flex;
@@ -87,7 +81,6 @@ input[type="number"] {
   font-size: 0.85rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--main-txt-color-dark);
 }
 .main_containers .title-container > a:hover {
   text-decoration: underline;
@@ -148,8 +141,8 @@ input[type="number"] {
 .content-container {
   margin-block: 1.5rem;
   padding: 1rem;
-  border-top: 1px dotted var(--main-txt-color-dark);
-  border-bottom: 1px dotted var(--main-txt-color-dark);
+  border-top: 1px dotted;
+  border-bottom: 1px dotted;
 }
 
 .content_row {
@@ -160,7 +153,7 @@ input[type="number"] {
   margin: 0 auto;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px dotted var(--main-txt-color-dark);
+  border-bottom: 1px dotted;
 }
 .content_row img {
   height: 100px;
@@ -171,7 +164,6 @@ input[type="number"] {
 }
 .content_row > span.count_data,
 .content_row > a {
-  color: var(--main-txt-color-dark);
   font-style: italic;
   font-size: 0.8rem;
   max-width: 200px;
@@ -199,7 +191,6 @@ input[type="number"] {
   text-decoration: underline;
 }
 .wrapper > span:nth-of-type(2) {
-  color: var(--main-txt-color-dark);
   font-size: 0.85rem;
   font-style: italic;
 }
@@ -211,15 +202,9 @@ input[type="number"] {
 }
 .hlc_navigation_container > a {
   flex: 1;
-  border: 1px dotted var(--main-bg-color-dark);
+  border: 1px dotted;
   text-align: center;
   text-transform: uppercase;
-  color: var(--main-txt-color-dark);
-}
-.hlc_navigation_container > a.active {
-  background-color: var(--main-bg-color-dark);
-  color: var(--main-txt-color-light);
-  border: none;
 }
 
 .label_container {
@@ -283,7 +268,6 @@ input[type="number"] {
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 1px 1px var(--main-txt-color-light);
   font-size: 0.7rem;
   gap: 1rem;
   overflow: hidden;
