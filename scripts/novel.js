@@ -27,15 +27,19 @@ const novel_desc = document.getElementById("novel_desc");
 const add_to_favorite = document.getElementById("add_to_favorite");
 
 window.addEventListener("load", async () => {
-  const novel_info = JSON.parse(localStorage.getItem("novel_info"));
-
-  const url = "https://novel-scraper-290c.onrender.com/api/novel/description";
-  const title = novel_info?.title;
-  const link = novel_info?.link;
-  const chapter_title = continue_reading_a?.dataset.chapter;
-  const chapter_link = continue_reading_a?.dataset.link;
-
   if (location.pathname.includes("/pages/novel.html")) {
+    const novel_info = getSearchParams();
+
+    const url = "https://novel-scraper-290c.onrender.com/api/novel/description";
+    const title = novel_info?.title;
+    const link = novel_info?.link;
+    const chapter_title = continue_reading_a?.dataset.chapter;
+    const chapter_link = continue_reading_a?.dataset.link;
+
+    if (novel_info.title === undefined) {
+      location.href = "../index.html";
+    }
+
     // ?show loader
     displayLoader();
     displayToast();
@@ -291,18 +295,10 @@ function getNovelInfo(e, pages = false, addEvent = true) {
   const title = target.dataset.title;
   const link = target.dataset.link;
 
-  localStorage.setItem(
-    "novel_info",
-    JSON.stringify({
-      title,
-      link,
-    })
-  );
-
   if (pages) {
-    location.href = "novel.html";
+    location.href = `novel.html?title=${title}&link=${link}`;
   } else {
-    location.href = "pages/novel.html";
+    location.href = `pages/novel.html?title=${title}&link=${link}`;
   }
 }
 

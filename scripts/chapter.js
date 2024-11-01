@@ -21,14 +21,16 @@ window.addEventListener("load", async () => {
 
     const url = "https://novel-scraper-290c.onrender.com/api/novel/content";
     const url2 = "https://novel-scraper-290c.onrender.com/api/novel/navigate";
-    const chapter = JSON.parse(localStorage.getItem("chapter"));
+    const chapter = getSearchParams();
     const title = chapter.title;
+    const title_link = chapter.title_link;
     const chapter_name = chapter.chapter;
     const link = chapter.link;
 
     novel_title.innerText = title;
     novel_chapter.innerText = chapter_name;
     breadcrumbs_novel_title.innerText = title;
+    breadcrumbs_novel_title.href = `novel.html?title=${title}&link=${title_link}`;
     document.title = chapter_name;
 
     fetch(url, {
@@ -214,33 +216,17 @@ async function getChapterContent(el, pages = false) {
 
   await saveReadingHistory(title, title_link, chapter, link);
   await updateBookmarkChapter(session_id, title, obj);
-  localStorage.setItem(
-    "novel_info",
-    JSON.stringify({
-      title,
-      link: title_link,
-    })
-  );
 
   if (pages) {
-    location.href = "chapter.html";
+    location.href = `chapter.html?title=${title}&title_link=${title_link}&chapter=${chapter}&link=${link}`;
   } else {
-    location.href = "pages/chapter.html";
+    location.href = `pages/chapter.html?title=${title}&title_link=${title_link}&chapter=${chapter}&link=${link}`;
   }
 }
 
 async function saveReadingHistory(title, title_link, chapter, link) {
   const session_id = getCookie("session_id") || "";
   let reading_id;
-
-  localStorage.setItem(
-    "chapter",
-    JSON.stringify({
-      title,
-      chapter,
-      link,
-    })
-  );
 
   if (session_id === "") {
     return;

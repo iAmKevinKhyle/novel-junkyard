@@ -74,8 +74,9 @@ function loadChapters(num) {
   ch_page_input.value = num;
 
   const url = `https://novel-scraper-290c.onrender.com/api/novel/chapters/${num}`;
-  const title = JSON.parse(localStorage.getItem("novel_info")).title;
-  const link = JSON.parse(localStorage.getItem("novel_info")).link;
+  const searchParams = getSearchParams();
+  const title = searchParams.title;
+  const link = searchParams.link;
 
   fetch(url, {
     method: "POST",
@@ -187,7 +188,8 @@ async function saveChapterListPageOnBookmark(num) {
     2,
   ];
 
-  const title = JSON.parse(localStorage.getItem("novel_info")).title;
+  const searchParams = getSearchParams();
+  const title = searchParams.title;
 
   await fetch(host + "bookmark", {
     method: "POST",
@@ -210,7 +212,8 @@ async function saveChapterListPageOnBookmark(num) {
 }
 
 async function getChapterListPageOnBookmark() {
-  const title = JSON.parse(localStorage.getItem("novel_info")).title;
+  const searchParams = getSearchParams();
+  const title = searchParams.title;
   let num = 1;
 
   const session_id = getCookie("session_id") || "";

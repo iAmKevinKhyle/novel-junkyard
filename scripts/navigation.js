@@ -188,3 +188,30 @@ function appendToast() {
 
   document.body.append(div);
 }
+
+// ? search params get and set method
+function setSearchParams(query) {
+  const searchString = new URLSearchParams();
+
+  for (const key in query) {
+    if (Object.prototype.hasOwnProperty.call(query, key)) {
+      const value = query[key];
+
+      searchString.append(key, value);
+    }
+  }
+
+  location.search = searchString;
+}
+
+function getSearchParams() {
+  const searchString = new URLSearchParams(location.search);
+
+  const object = new Object();
+
+  searchString.forEach((value, key) => {
+    object[key] = value;
+  });
+
+  return object;
+}
