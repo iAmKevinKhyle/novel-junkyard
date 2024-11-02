@@ -79,6 +79,22 @@
   transform: scale(1.05);
 }
 
+.bottom_title_container {
+  margin-top: 2rem;
+}
+.bottom_title_container > p {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+.bottom_title_container > p > b {
+  font-style: italic;
+}
+
 @media (max-width: 625px) {
   .main_containers {
     padding: 1.25rem 0.5rem;
@@ -89,6 +105,10 @@
   }
   .chapter_nav {
     justify-content: space-between;
+  }
+
+  .bottom_title_container > p {
+    width: 100%;
   }
 }
 

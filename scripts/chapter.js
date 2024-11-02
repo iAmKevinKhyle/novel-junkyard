@@ -6,6 +6,8 @@ const novel_chapter = document.querySelector(".novel_chapter");
 const prev_chapter = document.querySelectorAll("#prev_chapter");
 const next_chapter = document.querySelectorAll("#next_chapter");
 const loading_text = document.querySelector(".loading_text");
+const bottom_chapter_title = document.querySelector(".bottom_chapter_title");
+const bottom_title = document.querySelector(".bottom_title");
 
 let fetching = true;
 let protocol;
@@ -37,6 +39,8 @@ window.addEventListener("load", async () => {
     breadcrumbs_novel_title.innerText = title;
     breadcrumbs_novel_title.href = `novel.html?title=${title}&link=${title_link}`;
     document.title = chapter_name;
+    bottom_chapter_title.innerText = chapter_name;
+    bottom_title.innerText = title;
 
     fetch(url, {
       method: "POST",
