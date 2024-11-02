@@ -5,7 +5,7 @@
   --g: radial-gradient(
       farthest-side,
       #0000 calc(95% - 1px),
-      white calc(100% - 1px) 98%,
+      black calc(100% - 1px) 98%,
       #0000 101%
     )
     no-repeat;
@@ -50,7 +50,7 @@
   left: 0;
   height: 100dvh;
   width: 100dvw;
-  background-color: rgba(22, 22, 22, 0.9);
+  background-color: rgba(22, 22, 22, 0.95);
 
   display: flex;
   justify-content: center;

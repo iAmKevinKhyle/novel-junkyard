@@ -6,7 +6,21 @@
   --text-color: #c2c2c2;
 }
 
-*:not(.global-loader) {
+.loader {
+  --g: radial-gradient(
+      farthest-side,
+      #0000 calc(95% - 1px),
+      white calc(100% - 1px) 98%,
+      #0000 101%
+    )
+    no-repeat;
+}
+
+.global-loader {
+  border: 4px solid #ffffff;
+}
+
+*:not(.global-loader, .label_title) {
   border-color: var(--text-color) !important;
   color: var(--text-color) !important;
   outline: none;
