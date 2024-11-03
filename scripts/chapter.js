@@ -289,7 +289,7 @@ async function saveReadingHistory(title, title_link, chapter, link) {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
     })
     .catch((err) => console.log(err));
 }
@@ -315,7 +315,7 @@ async function updateBookmarkChapter(user_id, novel_title, data) {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
     })
     .catch((err) => console.log(err));
 }

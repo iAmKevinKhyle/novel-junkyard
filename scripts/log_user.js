@@ -323,6 +323,7 @@ async function renderProfilePage(session_id) {
 
   // ? get user using session id // api call
   let user;
+  let readings;
   const user_gmail = document.querySelector(".user_gmail");
   const user_name = document.querySelector(".user_name");
 
@@ -333,16 +334,27 @@ async function renderProfilePage(session_id) {
     })
     .catch((err) => console.log(err));
 
+  await fetch(host + "reading/history/" + session_id)
+    .then((res) => res.json())
+    .then((data) => {
+      readings = data.reading;
+    })
+    .catch((err) => console.log(err));
+
   const bookmarks = user.bookmark;
-  const readings = user.reading;
 
   bookmarks.forEach((bookmark) => {
     createBookmarkedNovelElements(bookmark, bookmark_content);
   });
 
+  const div = document.createElement("div");
+  div.classList.add("reading_history_grid");
+
   readings.forEach((reading, i) => {
-    createReadingNovelElements(reading, reading_content);
+    div.appendChild(createReadingNovelElements(reading));
   });
+
+  reading_content.appendChild(div);
 
   user_name.textContent = user.username;
   user_gmail.textContent = user.username + "#" + removeLetter(user.id);

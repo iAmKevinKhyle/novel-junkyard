@@ -190,21 +190,37 @@
   text-transform: uppercase;
   font-size: 0.75rem;
 }
-.reading_history_list {
-  min-height: 110px;
-}
-.reading_history_list li {
-  margin: 0.2rem;
-}
-.reading_history_list a {
-  font-size: 0.75rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.reading_history_grid {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  text-wrap: nowrap;
-  display: block;
 }
-.reading_history_list a:hover {
+.reading_history_grid > .list_row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+}
+.reading_history_grid > .list_row:not(:last-of-type) {
+  border-bottom: 1px dotted;
+}
+.reading_history_grid > .list_row > .col-1 {
+  width: 40%;
+  max-width: 300px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
+  padding: 0.5rem;
+}
+.reading_history_grid > .list_row > .col-3 {
+  width: 60%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
+  padding: 0.5rem 1rem;
+  border-left: 1px dotted;
+}
+.reading_history_grid > .list_row > .col-3 > a:hover {
   text-decoration: underline;
 }
 
