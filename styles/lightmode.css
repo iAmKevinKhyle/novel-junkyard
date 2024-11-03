@@ -114,6 +114,9 @@ p {
 div.card_wrapper > div.details > *:not(button) {
   color: var(--secondary-color) !important;
 }
+.dialog-ovelay .dialog .dialog-msg {
+  background-color: var(--primary-color);
+}
 
 ::-webkit-scrollbar {
   width: 10px;

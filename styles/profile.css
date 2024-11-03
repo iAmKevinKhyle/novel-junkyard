@@ -205,15 +205,14 @@
   border-bottom: 1px dotted;
 }
 .reading_history_grid > .list_row > .col-1 {
-  width: 40%;
-  max-width: 300px;
+  width: 60%;
   text-overflow: ellipsis;
   overflow: hidden;
   text-wrap: nowrap;
   padding: 0.5rem;
 }
 .reading_history_grid > .list_row > .col-3 {
-  width: 60%;
+  width: 40%;
   text-overflow: ellipsis;
   overflow: hidden;
   text-wrap: nowrap;

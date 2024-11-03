@@ -116,6 +116,10 @@ div.login_register > a.active {
   background-color: var(--darker-color);
 }
 
+.dialog-ovelay .dialog .dialog-msg {
+  background-color: var(--primary-color);
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
