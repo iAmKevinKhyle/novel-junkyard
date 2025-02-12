@@ -134,6 +134,9 @@ function handlePaginationCount(com, value) {
 
   checkButtonClickability();
   displayLoader();
+
+  // scroll to top
+  window.scroll(0, 0);
 }
 
 function checkButtonClickability() {
